@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="canonical" href="https://skfurniture.com/inquiry.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulk Inquiry - skfurniture</title>
@@ -53,10 +54,12 @@
     <div class="section bg-light">
         <div class="inquiry-container">
             <p style="text-align: center; margin-bottom: 40px; color: #4B5563;">
-                Fill out the form below to generate a pre-filled WhatsApp message. Our team responds to bulk inquiries within 12 hours.
+                Fill out the form below. We will respond with a quote within 12 hours via Email or WhatsApp.
             </p>
 
-            <form id="whatsappForm">
+            <form action="https://api.web3forms.com/submit" method="POST" id="web3Form">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -64,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label for="org">School / Organization</label>
-                        <input type="text" id="org" name="org" required placeholder="School Name">
+                        <input type="text" id="org" name="organization" required placeholder="School Name">
                     </div>
                 </div>
 
@@ -104,8 +107,16 @@
                     <textarea id="message" name="message" rows="5" placeholder="Any specific requirements regarding dimensions, materials (e.g., CRCA Steel), or delivery..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-whatsapp" style="width: 100%; font-size: 1.1rem; padding: 15px; border-radius: 9999px; justify-content: center;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Send Inquiry via WhatsApp</button>
+                <!-- Honeypot -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 15px; border-radius: 8px; justify-content: center; background-color: var(--primary-yellow); color: #212121; border: none;">Request Quote</button>
             </form>
+
+            <div style="text-align: center; margin-top: 20px;">
+                 <p style="color: #666; font-size: 0.9em;">Or chat directly with us:</p>
+                 <a href="https://wa.me/918169285185?text=Hi,%20I%20need%20a%20quote" class="btn btn-outline" style="margin-top: 10px; display: inline-flex; align-items: center;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> WhatsApp Now</a>
+            </div>
         </div>
     </div>
 

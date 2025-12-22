@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="canonical" href="https://skfurniture.com/product-detail.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Standard Dual Bench - skfurniture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Model Viewer for 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.0/model-viewer.min.js"></script>
+    <style>
+        .img-zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .img-zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.4);
+            visibility: hidden;
+        }
+        .img-zoom-result {
+            border: 1px solid #d4d4d4;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 105%;
+            z-index: 999;
+            background-repeat: no-repeat;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .customer-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .customer-img-thumb {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        model-viewer {
+            width: 100%;
+            height: 400px;
+            background-color: #f5f5f5;
+            display: none; /* Hidden by default */
+        }
+    </style>
 </head>
 <body>
 
@@ -53,9 +103,27 @@
     <section class="container product-detail-layout">
         <!-- Left: Gallery -->
         <div class="product-gallery">
-            <div class="gallery-main">
-                <img src="https://via.placeholder.com/600x600?text=Dual+Bench+Side+View" alt="Standard Dual Bench" id="currentImage" style="width:100%; height:auto; display:block;">
+            <div class="gallery-main img-zoom-container" onmouseleave="hideZoom()">
+                <img src="https://via.placeholder.com/600x600?text=Dual+Bench+Side+View" alt="Standard Dual Bench" id="currentImage" style="width:100%; height:auto; display:block;" onmousemove="imageZoom(event)">
+                <div id="myresult" class="img-zoom-result"></div>
+
+                <!-- 3D Model Viewer (Hidden by default) -->
+                <model-viewer id="modelViewer"
+                    src="https://modelviewer.dev/shared-assets/models/Chair.glb"
+                    ios-src="https://modelviewer.dev/shared-assets/models/Chair.usdz"
+                    alt="A 3D model of a chair"
+                    ar
+                    auto-rotate
+                    camera-controls>
+                </model-viewer>
             </div>
+
+            <div style="text-align: center; margin: 10px 0;">
+                <button class="btn btn-outline btn-sm" onclick="toggle3DView()">
+                    <i class="fas fa-cube"></i> View in 3D / AR
+                </button>
+            </div>
+
             <div class="gallery-thumbs">
                 <img src="https://via.placeholder.com/600x600?text=Front+View" class="gallery-thumb active" onclick="changeImage(this.src)">
                 <img src="https://via.placeholder.com/600x600?text=Side+View" class="gallery-thumb" onclick="changeImage(this.src)">
@@ -146,6 +214,22 @@
                 </div>
                 <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p>"Quality is exceptional. Highly recommended."</p>
+
+                <h4 style="margin-top: 20px; font-size: 0.9em; color: #666;">Customer Images</h4>
+                <div class="customer-images-grid">
+                    <img src="https://via.placeholder.com/150x150?text=Classroom+Setup" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/150x150?text=Installed+Desks" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="https://via.placeholder.com/150x150?text=Lab+Tables" class="customer-img-thumb" onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="reviewer-name">Admin, Ryan International</span>
+                    <span class="review-date">Feb 22, 2024</span>
+                </div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Fast delivery to our Navi Mumbai campus. The dual desks are sturdy."</p>
             </div>
         </div>
     </section>
@@ -189,10 +273,73 @@
 
     <script src="js/script.js"></script>
     <script>
+        // Image Zoom Logic
+        function imageZoom(e) {
+            const img = document.getElementById("currentImage");
+            const result = document.getElementById("myresult");
+
+            // Only zoom if 3D viewer is hidden
+            if(document.getElementById("modelViewer").style.display === "block") return;
+
+            result.style.display = "block";
+
+            // Calculate cursor position
+            const { left, top, width, height } = img.getBoundingClientRect();
+            const x = e.clientX - left;
+            const y = e.clientY - top;
+
+            // Calculate percentage
+            let xPerc = (x / width) * 100;
+            let yPerc = (y / height) * 100;
+
+            // Boundary checks
+            if (xPerc > 100) xPerc = 100;
+            if (xPerc < 0) xPerc = 0;
+            if (yPerc > 100) yPerc = 100;
+            if (yPerc < 0) yPerc = 0;
+
+            // Set background image and position
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (width * 2) + "px " + (height * 2) + "px"; // 2x Zoom
+            result.style.backgroundPosition = (xPerc) + "% " + (yPerc) + "%";
+        }
+
+        function hideZoom() {
+            document.getElementById("myresult").style.display = "none";
+        }
+
+        // 3D Viewer Toggle
+        function toggle3DView() {
+            const img = document.getElementById("currentImage");
+            const viewer = document.getElementById("modelViewer");
+            const btn = document.querySelector("button[onclick='toggle3DView()']");
+
+            if (viewer.style.display === "none" || viewer.style.display === "") {
+                img.style.display = "none";
+                viewer.style.display = "block";
+                btn.innerHTML = '<i class="fas fa-image"></i> View Photos';
+                hideZoom(); // Ensure zoom pane is gone
+            } else {
+                img.style.display = "block";
+                viewer.style.display = "none";
+                btn.innerHTML = '<i class="fas fa-cube"></i> View in 3D / AR';
+            }
+        }
+
         function changeImage(src) {
-            document.getElementById('currentImage').src = src;
+            // Reset to image view if in 3D mode
+            const img = document.getElementById("currentImage");
+            const viewer = document.getElementById("modelViewer");
+            if (viewer.style.display === "block") {
+                toggle3DView();
+            }
+
+            img.src = src;
             document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('active'));
-            event.target.classList.add('active');
+            // If the source was a thumb click
+            if(event.target.classList.contains('gallery-thumb')) {
+                event.target.classList.add('active');
+            }
         }
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
