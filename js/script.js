@@ -38,6 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const answer = question.nextElementSibling;
+
+            // Close other open items
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            // Toggle current
+            item.classList.toggle('active');
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = null;
+            }
+        });
+    });
+
     // Hero Slider
     const slides = document.querySelectorAll('.slide');
     if (slides.length > 0) {
