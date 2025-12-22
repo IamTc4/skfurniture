@@ -1,18 +1,16 @@
 :root {
-    /* Updated Colors: Deep Blue Primary, Slate Grey, Orange Accent */
-    --primary-blue: #0D47A1; /* Deep Blue - Trust & Authority */
-    --secondary-blue: #1565C0; /* Lighter Blue for Hover */
+    /* Theme: Modern Yellow & Dark Grey */
+    --primary-yellow: #FFC107; /* Amber 500 - Main Brand Color */
+    --secondary-yellow: #FFB300; /* Darker Yellow for Hover */
     --slate-grey: #455A64; /* Blue Grey 700 - Professional Text */
     --light-grey: #FAFAFA;
-    --dark-text: #263238; /* Blue Grey 900 */
+    --dark-text: #212121; /* Almost Black */
     --white: #FFFFFF;
-    --border-color: #ECEFF1;
-
-    --accent-orange: #FF6D00; /* Vibrant Orange for Calls to Action */
+    --border-color: #EEEEEE;
 
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Open Sans', sans-serif;
-    --link-blue: #0277BD; /* Link color */
+    --link-blue: #007185; /* Amazon blue for links */
 }
 
 /* Import Google Fonts */
@@ -34,7 +32,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: var(--primary-blue); /* Headings in Deep Blue */
+    color: var(--dark-text);
     font-weight: 700;
     line-height: 1.3;
 }
@@ -59,7 +57,7 @@ ul {
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    border-radius: 4px; /* Slightly more square for corporate feel */
+    border-radius: 50px; /* Pill shape */
     font-weight: 600;
     text-align: center;
     cursor: pointer;
@@ -71,35 +69,24 @@ ul {
 }
 
 .btn-primary {
-    background-color: var(--accent-orange); /* Orange for High Visibility CTA */
-    color: var(--white);
-    box-shadow: 0 4px 10px rgba(255, 109, 0, 0.3);
+    background-color: var(--primary-yellow);
+    color: var(--dark-text);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
 }
 
 .btn-primary:hover {
-    background-color: #E65100;
+    background-color: var(--secondary-yellow);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(255, 109, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
 }
 
 .btn-secondary {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    box-shadow: 0 4px 10px rgba(13, 71, 161, 0.3);
-}
-
-.btn-secondary:hover {
-    background-color: var(--secondary-blue);
-    transform: translateY(-2px);
-}
-
-.btn-accent {
     background-color: var(--dark-text);
     color: var(--white);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.btn-accent:hover {
+.btn-secondary:hover {
     background-color: #000;
     transform: translateY(-2px);
 }
@@ -116,13 +103,13 @@ ul {
 }
 
 .btn-outline {
-    border: 2px solid var(--primary-blue);
+    border: 2px solid var(--dark-text);
     background: transparent;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .btn-outline:hover {
-    background: var(--primary-blue);
+    background: var(--dark-text);
     color: var(--white);
 }
 
@@ -141,7 +128,7 @@ ul {
 
 /* Header & Nav */
 header.page-header {
-    background: #E3F2FD; /* Very light blue bg */
+    background: var(--light-grey);
     padding: 60px 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
@@ -157,26 +144,26 @@ header.page-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-top: 4px solid var(--primary-blue); /* Corporate accent on top */
+    border-top: 4px solid var(--primary-yellow); /* Yellow accent on top */
 }
 
 .logo {
     font-size: 26px;
     font-weight: 800;
-    color: var(--primary-blue);
+    color: var(--dark-text);
     display: flex;
     align-items: center;
     letter-spacing: -0.5px;
 }
 
 .logo i {
-    color: var(--accent-orange);
+    color: var(--primary-yellow);
     margin-right: 10px;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     align-items: center;
 }
 
@@ -189,8 +176,8 @@ header.page-header {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-blue);
-    border-bottom: 2px solid var(--accent-orange);
+    color: var(--dark-text);
+    border-bottom: 2px solid var(--primary-yellow);
 }
 
 .hamburger {
@@ -203,7 +190,7 @@ header.page-header {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: var(--primary-blue);
+    background-color: var(--dark-text);
     transition: all 0.3s ease-in-out;
 }
 
@@ -268,8 +255,9 @@ header.page-header {
     padding: 40px;
     z-index: 2;
     position: relative;
-    background: rgba(13, 71, 161, 0.7); /* Deep Blue Overlay */
+    background: rgba(0, 0, 0, 0.6); /* Dark Overlay */
     border-radius: 8px;
+    border: 2px solid var(--primary-yellow);
 }
 
 /* Dark overlay for readability */
@@ -280,22 +268,22 @@ header.page-header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
 .slide h1 {
-    color: var(--white);
+    color: var(--primary-yellow);
     font-size: 3.5rem;
     margin-bottom: 25px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .slide p {
     font-size: 1.3rem;
     margin-bottom: 35px;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
-    color: #E3F2FD;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    color: var(--white);
 }
 
 /* Section Common */
@@ -308,7 +296,7 @@ header.page-header {
     margin-bottom: 40px;
     font-size: 2.2rem;
     position: relative;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .category-title {
@@ -322,7 +310,7 @@ header.page-header {
     display: block;
     width: 80px;
     height: 4px;
-    background-color: var(--accent-orange);
+    background-color: var(--primary-yellow);
     margin: 15px auto 0;
     border-radius: 2px;
 }
@@ -349,7 +337,7 @@ header.page-header {
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-color: var(--secondary-blue);
+    border-color: var(--primary-yellow);
 }
 
 .product-img {
@@ -367,12 +355,12 @@ header.page-header {
 .product-info h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .product-code {
     font-size: 0.85rem;
-    color: #78909C;
+    color: #757575;
     margin-bottom: 10px;
 }
 
@@ -398,7 +386,7 @@ header.page-header {
 
 .breadcrumb a:hover {
     text-decoration: underline;
-    color: var(--accent-orange);
+    color: var(--primary-yellow);
 }
 
 .product-detail {
@@ -444,8 +432,8 @@ header.page-header {
 }
 
 .thumb.active {
-    border: 2px solid var(--accent-orange);
-    box-shadow: 0 0 5px rgba(255, 109, 0, 0.5);
+    border: 2px solid var(--primary-yellow);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 
 /* Details Right */
@@ -453,7 +441,7 @@ header.page-header {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 5px;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .brand-link {
@@ -473,7 +461,7 @@ header.page-header {
 }
 
 .text-warning {
-    color: #FFC107; /* Keep stars yellow */
+    color: #FFC107;
 }
 
 .rating-count {
@@ -498,7 +486,7 @@ header.page-header {
 
 .price-value {
     font-size: 1.5rem;
-    color: #B71C1C; /* Dark Red for Price/Action */
+    color: #B12704; /* Amazon Red */
     font-weight: 700;
     margin-left: 10px;
 }
@@ -542,8 +530,8 @@ header.page-header {
 }
 
 .tab-btn.active {
-    color: var(--primary-blue);
-    border-bottom: 3px solid var(--accent-orange);
+    color: var(--dark-text);
+    border-bottom: 3px solid var(--primary-yellow);
     font-weight: 700;
 }
 
@@ -575,10 +563,10 @@ header.page-header {
 }
 
 .specs-table th {
-    background-color: #E3F2FD;
+    background-color: #FFF8E1; /* Light Yellow */
     font-weight: 600;
     width: 30%;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 /* Reviews */
@@ -591,7 +579,7 @@ header.page-header {
 .reviewer-name {
     font-weight: 700;
     display: block;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .review-date {
@@ -636,8 +624,8 @@ header.page-header {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(13, 71, 161, 0.9); /* Blue opacity */
-    color: var(--white);
+    background: rgba(33, 33, 33, 0.9);
+    color: var(--primary-yellow);
     padding: 15px;
     transform: translateY(100%);
     transition: transform 0.3s;
@@ -692,7 +680,7 @@ header.page-header {
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    border-top: 5px solid var(--primary-blue);
+    border-top: 5px solid var(--primary-yellow);
 }
 
 .form-group {
@@ -703,7 +691,7 @@ header.page-header {
     display: block;
     margin-bottom: 10px;
     font-weight: 700;
-    color: var(--primary-blue);
+    color: var(--dark-text);
 }
 
 .form-group input, .form-group select, .form-group textarea {
@@ -718,7 +706,7 @@ header.page-header {
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--primary-blue);
+    border-color: var(--primary-yellow);
     outline: none;
     background: white;
 }
@@ -740,7 +728,7 @@ header.page-header {
 
 /* Footer */
 footer {
-    background-color: #263238; /* Blue Grey 900 */
+    background-color: #232F3E; /* Dark Blue Grey */
     color: #ECEFF1;
     padding: 60px 0 20px;
 }
@@ -754,10 +742,10 @@ footer {
 }
 
 .footer-col h3 {
-    color: var(--white);
+    color: var(--primary-yellow);
     margin-bottom: 20px;
     font-size: 1.1rem;
-    border-bottom: 2px solid var(--accent-orange);
+    border-bottom: 2px solid var(--white);
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -772,7 +760,7 @@ footer {
 }
 
 .footer-col a:hover {
-    color: var(--accent-orange);
+    color: var(--primary-yellow);
     text-decoration: none;
 }
 
@@ -792,7 +780,7 @@ footer {
     flex-wrap: wrap;
     margin-top: 50px;
     padding: 30px 0;
-    background: #F5F7F9;
+    background: #FFF8E1; /* Light Yellow bg */
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
@@ -804,8 +792,9 @@ footer {
 
 .trust-badge i {
     font-size: 3rem;
-    color: var(--primary-blue);
+    color: var(--primary-yellow);
     margin-bottom: 10px;
+    text-shadow: 1px 1px 0 #CCC;
 }
 
 .trust-badge h4 {
@@ -817,7 +806,7 @@ footer {
 .tech-process {
     padding: 40px;
     background: white;
-    border-left: 4px solid var(--primary-blue);
+    border-left: 4px solid var(--primary-yellow);
     margin-bottom: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -827,7 +816,7 @@ footer {
 }
 
 .process-step h3 {
-    color: var(--primary-blue);
+    color: var(--dark-text);
     font-size: 1.4rem;
     margin-bottom: 10px;
     display: flex;
@@ -835,7 +824,7 @@ footer {
 }
 
 .process-step h3 i {
-    color: var(--accent-orange);
+    color: var(--primary-yellow);
     margin-right: 15px;
     font-size: 1.2rem;
 }
