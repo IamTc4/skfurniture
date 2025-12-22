@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junior Classroom Bench - skfurniture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        @media (max-width: 768px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .gallery-main {
+            width: 100%;
+            height: 400px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        .gallery-thumbs {
+            display: flex;
+            gap: 10px;
+        }
+        .gallery-thumb {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-thumb:hover {
+            border-color: var(--primary-blue);
+        }
+        .product-title-large {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        .rating {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .product-description {
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .specs-section {
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+        .specs-toggle {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 15px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .specs-toggle:after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform 0.3s;
+        }
+        .specs-toggle.active:after {
+            transform: rotate(180deg);
+        }
+        .specs-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-left: 10px;
+        }
+        .specs-list {
+            padding: 15px 0;
+        }
+        .specs-list li {
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+        }
+        .specs-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        .bulk-form-mini {
+            background-color: var(--light-grey);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-row input, .form-row textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chair" style="color: var(--accent-orange); margin-right: 10px;"></i>
+                skfurniture
+            </a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Spaces We Cater To</a></li>
+                <li><a href="projects.html">Projects/Case Studies</a></li>
+                <li><a href="inquiry.html" class="btn btn-primary" style="color: white; padding: 8px 15px;">Request a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container product-detail-container">
+        <!-- Gallery -->
+        <div class="product-gallery">
+            <div class="gallery-main">
+                <i class="fas fa-chair fa-5x" style="color: #ccc;"></i>
+            </div>
+            <div class="gallery-thumbs">
+                <div class="gallery-thumb"><i class="fas fa-chair fa-2x" style="color: #ccc;"></i></div>
+                <div class="gallery-thumb"><i class="fas fa-layer-group fa-2x" style="color: #ccc;"></i></div>
+                <div class="gallery-thumb"><i class="fas fa-ruler-combined fa-2x" style="color: #ccc;"></i></div>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="product-details-content">
+            <h1 class="product-title-large">Junior Classroom Bench</h1>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span style="color: var(--slate-grey); margin-left: 10px;">(12 Reviews)</span>
+            </div>
+            <p class="product-description">
+                Designed for comfort and durability, the Junior Classroom Bench is the perfect seating solution for primary and secondary schools. It features an ergonomic design that promotes good posture and concentration.
+            </p>
+
+            <div class="specs-section">
+                <button class="specs-toggle active">Technical Specifications</button>
+                <div class="specs-content" style="max-height: 500px;"> <!-- Open by default for demo -->
+                    <ul class="specs-list">
+                        <li><span class="specs-label">Frame:</span> <span>Heavy-duty 1.5mm CRCA Steel with Powder Coating</span></li>
+                        <li><span class="specs-label">Top:</span> <span>25mm MDF with Post-formed or PVC Edge Banding</span></li>
+                        <li><span class="specs-label">Safety:</span> <span>Zero-hazard rounded corners and non-toxic paint</span></li>
+                        <li><span class="specs-label">Customization:</span> <span>Available in Primary, Junior, and Senior heights</span></li>
+                        <li><span class="specs-label">Warranty:</span> <span>10 Years Structural Warranty</span></li>
+                    </ul>
+                </div>
+
+                <button class="specs-toggle">Dimensions & Shipping</button>
+                <div class="specs-content">
+                    <ul class="specs-list">
+                        <li><span class="specs-label">Width:</span> <span>1200mm</span></li>
+                        <li><span class="specs-label">Depth:</span> <span>900mm</span></li>
+                        <li><span class="specs-label">Height:</span> <span>750mm (Desk), 450mm (Seat)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; display: flex; gap: 15px;">
+                <button class="btn btn-primary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> Download Brochure</button>
+            </div>
+
+            <!-- Mini Bulk Inquiry -->
+            <div class="bulk-form-mini">
+                <h3>Get a Bulk Quote</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Best prices for orders over 20 units.</p>
+                <form action="#" method="POST">
+                    <div class="form-row">
+                        <label>Quantity</label>
+                        <input type="number" min="1" value="20">
+                    </div>
+                    <div class="form-row">
+                        <label>Email / Phone</label>
+                        <input type="text" placeholder="Contact details">
+                    </div>
+                    <button type="button" class="btn btn-accent" style="width: 100%;">Request Price</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>skfurniture</h3>
+                <p>Sai Krupa Furniture & Fabrication Works.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 8169285185</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sai Krupa Furniture & Fabrication Works.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

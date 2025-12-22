@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Inquiry - skfurniture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .inquiry-container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chair" style="color: var(--accent-orange); margin-right: 10px;"></i>
+                skfurniture
+            </a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Spaces We Cater To</a></li>
+                <li><a href="projects.html">Projects/Case Studies</a></li>
+                <li><a href="inquiry.html" class="active btn btn-primary" style="color: white; padding: 8px 15px;">Request a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="section" style="background-color: var(--light-grey);">
+        <div class="inquiry-container">
+            <h1 class="section-title">Request a Bulk Quote</h1>
+            <p style="text-align: center; margin-bottom: 30px;">
+                Fill out the form below to get a custom quote for your school or institution. We guarantee a response within 24 hours.
+            </p>
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="org">School / Organization</label>
+                        <input type="text" id="org" name="org" required placeholder="School Name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@school.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product">Product of Interest</label>
+                        <select id="product" name="product">
+                            <option value="">Select a Product</option>
+                            <option value="bench-dual">Dual Classroom Bench</option>
+                            <option value="bench-single">Single Classroom Bench</option>
+                            <option value="desk-modular">Modular Desk</option>
+                            <option value="lab-table">Lab Table</option>
+                            <option value="library-shelf">Library Shelving</option>
+                            <option value="teacher-desk">Teacher's Desk</option>
+                            <option value="other">Other / Multiple</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Estimated Quantity</label>
+                        <input type="number" id="quantity" name="quantity" min="1" placeholder="e.g. 50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Requirements</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Any specific requirements regarding dimensions, materials, or delivery..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>skfurniture</h3>
+                <p>Sai Krupa Furniture & Fabrication Works.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 8169285185</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

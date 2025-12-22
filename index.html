@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skfurniture - Educational Furniture Specialists</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            background: var(--light-grey);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        .category-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .client-logos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .client-logo {
+            height: 60px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .client-logo:hover {
+            opacity: 1;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chair" style="color: var(--accent-orange); margin-right: 10px;"></i>
+                skfurniture
+            </a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Spaces We Cater To</a></li>
+                <li><a href="projects.html">Projects/Case Studies</a></li>
+                <li><a href="inquiry.html" class="btn btn-primary" style="color: white; padding: 8px 15px;">Request a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Shaping the Future of Learning with Ergonomic Classroom Furniture</h1>
+            <p>Premium, durable, and safe furniture designed for modern educational environments.</p>
+            <a href="products.html" class="btn btn-accent">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Key Categories -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Product Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img"><i class="fas fa-user-graduate fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-content">
+                        <h3>Dual Benches</h3>
+                        <p>Standard ergonomic benches for classrooms.</p>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img"><i class="fas fa-users fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-content">
+                        <h3>Modular Desks</h3>
+                        <p>Flexible desks for collaborative learning.</p>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img"><i class="fas fa-flask fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-content">
+                        <h3>Lab & Library</h3>
+                        <p>Chemical-resistant and specialized surfaces.</p>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img"><i class="fas fa-chalkboard-teacher fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-content">
+                        <h3>Teacher's Furniture</h3>
+                        <p>Ergonomic desks and chairs for faculty.</p>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section" style="background-color: var(--light-grey);">
+        <div class="container">
+            <h2 class="section-title">Why Choose skfurniture?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Safety First</h3>
+                    <p>Zero-hazard rounded corners and non-toxic paint ensure student safety.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Durability</h3>
+                    <p>Heavy-duty 1.5mm CRCA Steel frames built to last 10+ years.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-smile"></i></div>
+                    <h3>Ergonomic Design</h3>
+                    <p>Designs that support better posture and enhance learning focus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Elements -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Esteemed Clients & Certifications</h2>
+            <div class="client-logos">
+                <!-- Placeholders for Logos -->
+                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">SCHOOL A</div>
+                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">COLLEGE B</div>
+                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">INSTITUTE C</div>
+                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">ISO 9001</div>
+                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">BIFMA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>skfurniture</h3>
+                <p>Sai Krupa Furniture & Fabrication Works. Specialists in educational furniture with over 30 years of experience.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Shop No.4, Shree Co.Op., Sector 7, Thane (W)</li>
+                    <li><i class="fas fa-phone"></i> 8169285185 / 9870075755</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="inquiry.html">Request Quote</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
