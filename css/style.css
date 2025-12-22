@@ -1099,3 +1099,90 @@ footer {
 .product-info .btn-block:last-child {
     margin-bottom: 0;
 }
+
+/* ===== Manufacturing Process Animations ===== */
+
+.section-title,
+.section p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.section.animate .section-title,
+.section.animate p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-process {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: all 0.8s ease 0.2s;
+}
+
+.tech-process.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Individual steps */
+.process-step {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s ease;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Animated state */
+.process-step.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Icon animation */
+.process-step i {
+    color: var(--primary-yellow);
+    margin-right: 8px;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.process-step.animate i {
+    transform: scale(1.15);
+    color: var(--secondary-yellow);
+}
+
+/* Optional vertical flow line */
+.tech-process::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    bottom: 40px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--primary-yellow),
+        transparent
+    );
+    opacity: 0.2;
+}
+
+/* Hover Micro-Interaction */
+.process-step:hover {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding-left: 30px;
+}
+
+/* Left-to-right Flow (Desktop only) */
+@media (min-width: 992px) {
+    .process-step {
+        transform: translateX(-30px);
+    }
+    .process-step.animate {
+        transform: translateX(0);
+    }
+}
