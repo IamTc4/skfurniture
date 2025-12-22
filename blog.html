@@ -4,23 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Furniture Insights | SK Furniture Blog</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="page-header" style="background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; padding: 100px 0; color: white; position: relative;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h1 style="color: #FFC107; font-size: 3rem;">Furniture & Learning</h1>
-            <p style="font-size: 1.2rem; color: #fff;">Expert insights on classroom ergonomics and school infrastructure.</p>
-        </div>
-    </header>
-
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-chair"></i> SK Furniture
+                <i class="fas fa-layer-group"></i> skfurniture
             </a>
             <div class="hamburger">
                 <span></span>
@@ -29,107 +22,123 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                <li class="dropdown">
+                    <a href="solutions.html">Solutions <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="solutions.html#classroom">Smart Classroom</a>
+                        <a href="solutions.html#lab">Science Lab</a>
+                        <a href="solutions.html#library">Library & Commons</a>
+                        <a href="solutions.html#office">Admin & Staff</a>
+                    </div>
+                </li>
                 <li><a href="manufacturing.html">Manufacturing</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="dealer.html">Dealer Portal</a></li>
-                <li><a href="inquiry.html" class="btn btn-primary" style="padding: 8px 20px; color: #212121;">Get Quote</a></li>
+                <li><a href="inquiry.html" class="btn btn-primary" style="padding: 10px 24px; color: #212121;">Get Quote</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="section">
+    <!-- Header -->
+    <header class="page-header">
         <div class="container">
-            <h2 class="section-title">Latest Articles</h2>
+            <h1>Furniture & Learning</h1>
+            <p>Expert insights on classroom ergonomics and school infrastructure</p>
+        </div>
+    </header>
 
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+    <div class="section">
+        <div class="container">
+            <div class="blog-layout">
                 <!-- Main Content -->
                 <div class="blog-list">
 
-                    <article style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Classroom Ergonomics" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-                        <h3 style="font-size: 1.8rem; margin-bottom: 10px;"><a href="#" style="color: #212121;">The Impact of Seating on Student Focus & Learning</a></h3>
-                        <div style="color: #757575; font-size: 0.9rem; margin-bottom: 15px;">
-                            <span><i class="far fa-calendar"></i> Oct 12, 2023</span> &nbsp;|&nbsp;
-                            <span><i class="far fa-user"></i> By Dr. A. Sharma (Ergonomist)</span>
+                    <article class="blog-card">
+                        <img src="https://via.placeholder.com/1000x500?text=Ergonomics" alt="Classroom Ergonomics" class="blog-img">
+                        <h3 class="blog-title"><a href="#">The Impact of Seating on Student Focus & Learning</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Oct 12, 2023</span>
+                            <span><i class="far fa-user"></i> By Dr. A. Sharma</span>
                         </div>
-                        <p style="color: #455A64; margin-bottom: 20px;">
+                        <p style="margin-bottom: 24px;">
                             Research indicates that student attention spans are directly correlated to their physical comfort.
                             Traditional rigid wooden benches often lead to slouching, restricting blood flow and reducing oxygen intake.
                             In this article, we explore how ergonomic dual desks with proper lumbar support can increase classroom engagement by up to 25%.
                         </p>
-                        <a href="#" class="btn btn-outline" style="border-radius: 4px; padding: 8px 15px; font-size: 0.8rem;">Read More</a>
+                        <a href="#" class="btn btn-outline">Read More</a>
                     </article>
 
-                    <article style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Science Lab Safety" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-                        <h3 style="font-size: 1.8rem; margin-bottom: 10px;"><a href="#" style="color: #212121;">Choosing the Right Material for Chemistry Labs: CRCA vs. Stainless Steel</a></h3>
-                        <div style="color: #757575; font-size: 0.9rem; margin-bottom: 15px;">
-                            <span><i class="far fa-calendar"></i> Sept 28, 2023</span> &nbsp;|&nbsp;
+                    <article class="blog-card" style="border-bottom: none;">
+                        <img src="https://via.placeholder.com/1000x500?text=Lab+Materials" alt="Science Lab Safety" class="blog-img">
+                        <h3 class="blog-title"><a href="#">Choosing the Right Material for Chemistry Labs</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Sept 28, 2023</span>
                             <span><i class="far fa-user"></i> Technical Team</span>
                         </div>
-                        <p style="color: #455A64; margin-bottom: 20px;">
+                        <p style="margin-bottom: 24px;">
                             Chemical resistance is the top priority for any laboratory setup. While wooden tables degrade under acid spills,
                             Powder Coated CRCA Steel offers a balance of durability and cost-effectiveness. We compare the longevity of
                             various surfaces against common high-school laboratory reagents.
                         </p>
-                        <a href="#" class="btn btn-outline" style="border-radius: 4px; padding: 8px 15px; font-size: 0.8rem;">Read More</a>
+                        <a href="#" class="btn btn-outline">Read More</a>
                     </article>
 
                 </div>
 
                 <!-- Sidebar -->
                 <aside>
-                    <div style="background: #FAFAFA; padding: 30px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 30px;">
-                        <h4 style="font-size: 1.2rem; margin-bottom: 20px; border-left: 3px solid #FFC107; padding-left: 10px;">Categories</h4>
-                        <ul style="list-style: none;">
-                            <li style="margin-bottom: 10px;"><a href="#" style="color: #455A64;">Classroom Ergonomics (12)</a></li>
-                            <li style="margin-bottom: 10px;"><a href="#" style="color: #455A64;">Laboratory Safety (8)</a></li>
-                            <li style="margin-bottom: 10px;"><a href="#" style="color: #455A64;">Library Spaces (5)</a></li>
-                            <li style="margin-bottom: 10px;"><a href="#" style="color: #455A64;">Maintenance Tips (15)</a></li>
+                    <div class="sidebar-box">
+                        <h4 class="sidebar-title">Categories</h4>
+                        <ul class="sidebar-list">
+                            <li><a href="#">Classroom Ergonomics (12)</a></li>
+                            <li><a href="#">Laboratory Safety (8)</a></li>
+                            <li><a href="#">Library Spaces (5)</a></li>
+                            <li><a href="#">Maintenance Tips (15)</a></li>
                         </ul>
                     </div>
 
-                    <div style="background: #212121; padding: 30px; border-radius: 8px; color: white; text-align: center;">
-                        <h4 style="color: #FFC107; margin-bottom: 15px;">Need a Consultation?</h4>
-                        <p style="font-size: 0.9rem; margin-bottom: 20px; color: #ccc;">Get a free ergonomic assessment for your school.</p>
+                    <div class="sidebar-box" style="background: #1F2937; color: white; text-align: center; border: none;">
+                        <h4 style="color: var(--primary-yellow); margin-bottom: 16px; font-size: 1.25rem;">Need a Consultation?</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 24px; color: #9CA3AF;">Get a free ergonomic assessment for your school.</p>
                         <a href="inquiry.html" class="btn btn-primary" style="width: 100%;">Contact Us</a>
                     </div>
                 </aside>
             </div>
-
         </div>
-    </section>
+    </div>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col" style="flex: 1; min-width: 250px;">
-                    <h3>SK Furniture</h3>
-                    <p style="margin-top: 20px; color: #B0BEC5;">Leading manufacturer of ergonomic educational furniture, committed to shaping the future of learning environments.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>skfurniture</h3>
+                    <p>Specialists in educational furniture manufacturing.</p>
                 </div>
-                <div class="footer-col" style="flex: 1; min-width: 200px;">
-                    <h3>Quick Links</h3>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
                     <ul>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="manufacturing.html">Manufacturing</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="solutions.html#classroom">Smart Classroom</a></li>
+                        <li><a href="solutions.html#lab">Science Labs</a></li>
                     </ul>
                 </div>
-                <div class="footer-col" style="flex: 1; min-width: 200px;">
-                    <h3>Contact</h3>
+                <div class="footer-col">
+                    <h4>Company</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt" style="color: #FFC107; margin-right: 10px;"></i> +91 98765 43210</li>
-                        <li><i class="fas fa-envelope" style="color: #FFC107; margin-right: 10px;"></i> sales@skfurniture.com</li>
-                        <li><i class="fas fa-map-marker-alt" style="color: #FFC107; margin-right: 10px;"></i> Industrial Area, Pune</li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="color: var(--primary-yellow); margin-right: 10px;"></i> 8169285185</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 SK Furniture. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

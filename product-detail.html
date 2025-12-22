@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Standard Dual Bench - skfurniture</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,79 +22,95 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html" class="active">Products</a></li>
+                <li class="dropdown">
+                    <a href="solutions.html">Solutions <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="solutions.html#classroom">Smart Classroom</a>
+                        <a href="solutions.html#lab">Science Lab</a>
+                        <a href="solutions.html#library">Library & Commons</a>
+                        <a href="solutions.html#office">Admin & Staff</a>
+                    </div>
+                </li>
                 <li><a href="manufacturing.html">Manufacturing</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="dealer.html">Dealer Portal</a></li>
-                <li><a href="inquiry.html" class="btn btn-primary" style="padding: 8px 20px; color: #212121;">Get Quote</a></li>
+                <li><a href="inquiry.html" class="btn btn-primary" style="padding: 10px 24px; color: #212121;">Get Quote</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb container">
-        <a href="index.html">Home</a> &gt; <a href="products.html">Products</a> &gt; <span>Standard Dual Bench</span>
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> &gt; <a href="solutions.html">Solutions</a> &gt; <span>Standard Dual Bench</span>
+        </div>
     </div>
 
-    <!-- Product Detail Section (Amazon Style) -->
-    <section class="product-detail container">
+    <!-- Product Detail Section -->
+    <section class="container product-detail-layout">
+        <!-- Left: Gallery -->
         <div class="product-gallery">
-            <div class="main-image">
-                <img src="https://github.com/skinterios.github.io/blob/main/Screenshot%202025-01-29%20at%204.34.19%E2%80%AFPM.png?raw=true" alt="Standard Dual Bench" id="currentImage">
+            <div class="gallery-main">
+                <img src="https://via.placeholder.com/600x600?text=Dual+Bench+Side+View" alt="Standard Dual Bench" id="currentImage" style="width:100%; height:auto; display:block;">
             </div>
-            <div class="thumbnail-list">
-                <img src="https://github.com/skinterios.github.io/blob/main/Screenshot%202025-01-29%20at%204.34.19%E2%80%AFPM.png?raw=true" class="thumb active" onclick="changeImage(this.src)">
-                <img src="https://images.unsplash.com/photo-1616531770192-6eaea74c2456?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" class="thumb" onclick="changeImage(this.src)">
-                <img src="https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" class="thumb" onclick="changeImage(this.src)">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" class="thumb" onclick="changeImage(this.src)">
+            <div class="gallery-thumbs">
+                <img src="https://via.placeholder.com/600x600?text=Dual+Bench+Side+View" class="gallery-thumb active" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/600x600?text=Classroom+View" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/600x600?text=Top+View" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/600x600?text=Material+Close-up" class="gallery-thumb" onclick="changeImage(this.src)">
             </div>
         </div>
 
+        <!-- Right: Info -->
         <div class="product-info-col">
-            <h1 class="product-title">Standard Dual Bench for Classrooms (Heavy Duty)</h1>
-            <p class="brand-link">Visit the skfurniture Store</p>
+            <div class="product-meta">
+                <h1 class="product-title">Standard Dual Bench for Classrooms (Heavy Duty)</h1>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <a href="#" class="brand-link" style="color: var(--link-blue);">Visit the skfurniture Store</a>
+                    <span class="product-sku">SKU: SK-DB-001</span>
+                </div>
 
-            <div class="ratings">
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star-half-alt text-warning"></i>
-                <span class="rating-count">142 ratings | 50+ answered questions</span>
+                <div class="ratings" style="margin-bottom: 20px;">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star-half-alt text-warning"></i>
+                    <span class="rating-count" style="color: #666; font-size: 0.9em;">(142 Verified Reviews)</span>
+                </div>
             </div>
 
-            <hr class="divider">
+            <div class="bulk-quote-box">
+                <p class="price-label" style="color: #666; font-size: 0.9em;">Bulk Pricing Available</p>
+                <div style="display: flex; align-items: baseline;">
+                    <span class="bulk-price">Request Quote</span>
+                    <span style="margin-left: 10px; color: #166534; font-size: 0.9em; font-weight: 600;"><i class="fas fa-check"></i> Volume Discounts Applied</span>
+                </div>
+                <p style="color: #666; font-size: 0.85em; margin-bottom: 20px;">Inclusive of GST. Shipping calculated at checkout.</p>
 
-            <div class="price-section">
-                <span class="price-label">Bulk Price:</span>
-                <span class="price-value">Request Quote</span>
-                <p class="taxes">Inclusive of all taxes (GST extra if applicable)</p>
+                <a href="https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20Standard%20Dual%20Bench%20(SK-DB-001)" class="btn btn-primary btn-block" style="border-radius: 8px; justify-content: center;">
+                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Get Bulk Quote
+                </a>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="#" style="font-size: 0.9em; color: var(--link-blue); text-decoration: underline;"><i class="fas fa-file-download"></i> Download Technical Spec Sheet</a>
+                </div>
             </div>
-
-            <div class="action-buttons">
-                <a href="https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20Standard%20Dual%20Bench%20(SK-DB-001)" class="btn btn-whatsapp btn-large"><i class="fab fa-whatsapp"></i> Get Quote via WhatsApp</a>
-                <a href="#" class="btn btn-outline btn-large" style="border: 1px dashed #999; color: #666;"><i class="fas fa-file-pdf"></i> Download Tech Spec</a>
-            </div>
-
-            <hr class="divider">
 
             <div class="feature-bullets">
-                <h4>About this item</h4>
-                <ul>
-                    <li><strong>Ergonomic Design:</strong> Promotes good posture for students during long study hours (IS 4837 compliant).</li>
-                    <li><strong>Heavy Duty Frame:</strong> Made from 1.5mm CRCA Steel with 7-tank anti-rust Powder Coating.</li>
-                    <li><strong>Safety First:</strong> Zero-hazard rounded corners and non-toxic paint finish.</li>
-                    <li><strong>Durable Top:</strong> 25mm MDF with Post-formed or PVC Edge Banding options.</li>
-                    <li><strong>Customizable:</strong> Available in sizes for Primary, Junior, and Senior sections.</li>
+                <h4 style="margin-bottom: 15px;">About this item</h4>
+                <ul class="specs-list">
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Ergonomic Design:</strong> Promotes good posture (IS 4837 compliant).</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Heavy Duty Frame:</strong> 1.5mm CRCA Steel with 7-tank anti-rust coating.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Safety First:</strong> Rounded corners and non-toxic paint.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Durable Top:</strong> 25mm MDF with PVC Edge Banding.</span></li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Technical Specs & Details Tabs -->
-    <section class="product-tabs container">
+    <!-- Tabs -->
+    <section class="container" style="margin-bottom: 80px;">
         <div class="tab-headers">
             <button class="tab-btn active" onclick="openTab(event, 'specs')">Technical Specifications</button>
             <button class="tab-btn" onclick="openTab(event, 'desc')">Product Description</button>
@@ -105,34 +120,13 @@
         <div id="specs" class="tab-content active">
             <table class="specs-table">
                 <tbody>
-                    <tr>
-                        <th>Material</th>
-                        <td>High-Grade CRCA Steel & MDF/PLB</td>
-                    </tr>
-                    <tr>
-                        <th>Frame Thickness</th>
-                        <td>1.5mm Round/Square Pipe (ERW)</td>
-                    </tr>
-                    <tr>
-                        <th>Desk Top Size</th>
-                        <td>1050mm x 400mm (Standard)</td>
-                    </tr>
-                    <tr>
-                        <th>Seat Height</th>
-                        <td>450mm (Standard Senior)</td>
-                    </tr>
-                    <tr>
-                        <th>Finish</th>
-                        <td>Epoxy Powder Coated (60-70 microns)</td>
-                    </tr>
-                    <tr>
-                        <th>Warranty</th>
-                        <td>5 Years Manufacturer Warranty</td>
-                    </tr>
-                    <tr>
-                        <th>Certifications</th>
-                        <td>ISO 9001:2015, BIFMA Compliant, IS 4837</td>
-                    </tr>
+                    <tr><th>Material</th><td>High-Grade CRCA Steel & MDF/PLB</td></tr>
+                    <tr><th>Frame Thickness</th><td>1.5mm Round/Square Pipe (ERW)</td></tr>
+                    <tr><th>Desk Top Size</th><td>1050mm x 400mm (Standard)</td></tr>
+                    <tr><th>Seat Height</th><td>450mm (Standard Senior)</td></tr>
+                    <tr><th>Finish</th><td>Epoxy Powder Coated (60-70 microns)</td></tr>
+                    <tr><th>Warranty</th><td>5 Years Manufacturer Warranty</td></tr>
+                    <tr><th>Certifications</th><td>ISO 9001:2015, BIFMA Compliant, IS 4837</td></tr>
                 </tbody>
             </table>
         </div>
@@ -140,7 +134,6 @@
         <div id="desc" class="tab-content">
             <h3>Designed for the Modern Classroom</h3>
             <p>The Standard Dual Bench by skfurniture is engineered to withstand the rigors of daily classroom use while providing maximum comfort. Unlike standard market furniture, our benches focus on spinal health.</p>
-            <p><strong>Why Choose CRCA Steel?</strong> Cold Rolled Close Annealed steel offers superior strength and surface finish compared to mild steel. Our 7-tank process ensures the powder coating adheres perfectly, preventing rust even in humid conditions.</p>
         </div>
 
         <div id="reviews" class="tab-content">
@@ -149,20 +142,8 @@
                     <span class="reviewer-name">Principal, St. Xavier's High School</span>
                     <span class="review-date">March 10, 2024</span>
                 </div>
-                <div class="review-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="review-text">"We ordered 50 sets for our new wing. The quality is exceptional, especially the edge banding which usually peels off in other brands. Highly recommended."</p>
-            </div>
-             <div class="review-item">
-                <div class="review-header">
-                    <span class="reviewer-name">Admin, Green Valley International</span>
-                    <span class="review-date">Feb 15, 2024</span>
-                </div>
-                <div class="review-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="review-text">"Delivery was on time and installation team was professional. The dual tone color looks great in our classrooms."</p>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Quality is exceptional. Highly recommended."</p>
             </div>
         </div>
     </section>
@@ -170,32 +151,33 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col" style="flex: 1; min-width: 250px;">
-                    <h3>SK Furniture</h3>
-                    <p style="margin-top: 20px; color: #B0BEC5;">Specialists in educational furniture.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>skfurniture</h3>
+                    <p>Specialists in educational furniture manufacturing.</p>
                 </div>
-                <div class="footer-col" style="flex: 1; min-width: 200px;">
-                    <h3>Quick Links</h3>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="manufacturing.html">Manufacturing</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="inquiry.html">Request Quote</a></li>
+                        <li><a href="solutions.html#classroom">Smart Classroom</a></li>
+                        <li><a href="solutions.html#lab">Science Labs</a></li>
                     </ul>
                 </div>
-                <div class="footer-col" style="flex: 1; min-width: 200px;">
-                    <h3>Contact</h3>
+                <div class="footer-col">
+                    <h4>Company</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt" style="color: #FFC107; margin-right: 10px;"></i> 8169285185</li>
-                        <li><i class="fas fa-map-marker-alt" style="color: #FFC107; margin-right: 10px;"></i> Shop No.4, Shree Co.Op., Thane (W)</li>
-                        <li><a href="dealer.html" style="color: #FFC107; text-decoration: underline;">Dealer Portal Login</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="color: var(--primary-yellow); margin-right: 10px;"></i> 8169285185</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
             </div>
         </div>
@@ -203,14 +185,11 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Inline script for product detail specific interactions
         function changeImage(src) {
             document.getElementById('currentImage').src = src;
-            // Update active state on thumbnails
-            document.querySelectorAll('.thumb').forEach(thumb => thumb.classList.remove('active'));
+            document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('active'));
             event.target.classList.add('active');
         }
-
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");

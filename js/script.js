@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Dropdown Toggle
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        if (link) {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault(); // Prevent navigation on mobile to show submenu
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+    });
+
     // Product Specs Toggle
     const specsToggles = document.querySelectorAll('.specs-toggle');
     specsToggles.forEach(toggle => {
