@@ -4,74 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulk Inquiry - skfurniture</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .inquiry-container {
-            max-width: 800px;
-            margin: 60px auto;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="container navbar">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-chair" style="color: var(--accent-orange); margin-right: 10px;"></i>
-                skfurniture
+                <i class="fas fa-layer-group"></i> skfurniture
             </a>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="projects.html">Spaces We Cater To</a></li>
-                <li><a href="projects.html">Projects/Case Studies</a></li>
-                <li><a href="inquiry.html" class="active btn btn-primary" style="color: white; padding: 8px 15px;">Request a Quote</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="https://wa.me/918169285185?text=I%20am%20interested%20in%20a%20quote" class="btn btn-primary nav-cta">Request a Quote</a></li>
             </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Request a Bulk Quote</h1>
+            <p>Direct WhatsApp Inquiry for Schools & Institutions</p>
         </div>
     </header>
 
     <div class="section" style="background-color: var(--light-grey);">
         <div class="inquiry-container">
-            <h1 class="section-title">Request a Bulk Quote</h1>
-            <p style="text-align: center; margin-bottom: 30px;">
-                Fill out the form below to get a custom quote for your school or institution. We guarantee a response within 24 hours.
+            <p style="text-align: center; margin-bottom: 40px; color: var(--slate-grey);">
+                Fill out the form below to generate a pre-filled WhatsApp message.
             </p>
 
-            <form>
+            <form id="whatsappForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -99,13 +72,13 @@
                         <label for="product">Product of Interest</label>
                         <select id="product" name="product">
                             <option value="">Select a Product</option>
-                            <option value="bench-dual">Dual Classroom Bench</option>
-                            <option value="bench-single">Single Classroom Bench</option>
-                            <option value="desk-modular">Modular Desk</option>
-                            <option value="lab-table">Lab Table</option>
-                            <option value="library-shelf">Library Shelving</option>
-                            <option value="teacher-desk">Teacher's Desk</option>
-                            <option value="other">Other / Multiple</option>
+                            <option value="Dual Classroom Bench">Dual Classroom Bench</option>
+                            <option value="Single Classroom Bench">Single Classroom Bench</option>
+                            <option value="Modular Desk">Modular Desk</option>
+                            <option value="Lab Table">Lab Table</option>
+                            <option value="Library Shelving">Library Shelving</option>
+                            <option value="Teacher's Desk">Teacher's Desk</option>
+                            <option value="Other">Other / Multiple</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -119,30 +92,55 @@
                     <textarea id="message" name="message" rows="5" placeholder="Any specific requirements regarding dimensions, materials, or delivery..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Submit Inquiry</button>
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%; font-size: 1.1rem; padding: 15px;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Send Inquiry via WhatsApp</button>
             </form>
         </div>
     </div>
 
-    <footer>
-        <div class="container footer-container">
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
             <div class="footer-col">
                 <h3>skfurniture</h3>
-                <p>Sai Krupa Furniture & Fabrication Works.</p>
+                <p>Specialists in educational furniture.</p>
             </div>
             <div class="footer-col">
                 <h3>Contact Us</h3>
+                <p>Shop No.4, Shree Co.Op., Thane (W)</p>
+                <p>8169285185</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><i class="fas fa-phone"></i> 8169285185</li>
-                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="inquiry.html">Request Quote</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+            <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const org = document.getElementById('org').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const message = document.getElementById('message').value;
+
+            const text = `*New Bulk Inquiry*\n\n*Name:* ${name}\n*Org:* ${org}\n*Email:* ${email}\n*Phone:* ${phone}\n*Product:* ${product}\n*Qty:* ${quantity}\n*Note:* ${message}`;
+
+            const url = `https://wa.me/918169285185?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        });
+    </script>
 </body>
 </html>

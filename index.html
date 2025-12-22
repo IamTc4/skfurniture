@@ -9,57 +9,82 @@
     <style>
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         .category-card {
-            background: var(--light-grey);
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
         }
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary-yellow);
         }
         .category-img {
-            height: 200px;
-            background-color: #ddd;
+            height: 220px;
+            background-color: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.3s;
+        }
+        .category-card:hover .category-img {
+            background-color: #fff8e1; /* Very light yellow */
         }
         .category-content {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
+        }
+        .category-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
         .client-logos {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
             align-items: center;
+            opacity: 0.7;
+            filter: grayscale(100%);
+            transition: all 0.5s;
         }
-        .client-logo {
-            height: 60px;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-        }
-        .client-logo:hover {
+        .client-logos:hover {
+            filter: grayscale(0%);
             opacity: 1;
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
         .feature-item {
             text-align: center;
-            padding: 20px;
+            padding: 35px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
         }
         .feature-icon {
-            font-size: 3rem;
-            color: var(--accent-orange);
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 25px;
+        }
+        .feature-item h3 {
+            margin-bottom: 15px;
+        }
+        /* Overriding inline styles from previous version for cleaner HTML */
+        .btn-header {
+            color: var(--dark-text) !important;
         }
     </style>
 </head>
@@ -69,7 +94,7 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <i class="fas fa-chair" style="color: var(--accent-orange); margin-right: 10px;"></i>
+                <i class="fas fa-layer-group"></i> <!-- Updated Icon -->
                 skfurniture
             </a>
             <div class="hamburger">
@@ -80,56 +105,76 @@
             <ul class="nav-links">
                 <li><a href="products.html">Products</a></li>
                 <li><a href="projects.html">Spaces We Cater To</a></li>
-                <li><a href="projects.html">Projects/Case Studies</a></li>
-                <li><a href="inquiry.html" class="btn btn-primary" style="color: white; padding: 8px 15px;">Request a Quote</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <!-- Direct WhatsApp CTA -->
+                <li><a href="https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20a%20quote%20for%20school%20furniture." class="btn btn-primary btn-header" target="_blank">Request a Quote</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Shaping the Future of Learning with Ergonomic Classroom Furniture</h1>
-            <p>Premium, durable, and safe furniture designed for modern educational environments.</p>
-            <a href="products.html" class="btn btn-accent">Explore Collection</a>
+    <!-- Auto-Moving Hero Slider -->
+    <section class="hero-slider" id="heroSlider">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container slide-content">
+                <h1>Shaping the Future of Learning</h1>
+                <p>Ergonomic, durable, and safe furniture for the modern classroom.</p>
+                <a href="products.html" class="btn btn-primary">Explore Products</a>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-37559cc79276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container slide-content">
+                <h1>Transforming Educational Spaces</h1>
+                <p>From collaborative labs to comfortable libraries, we build it all.</p>
+                <a href="projects.html" class="btn btn-primary">View Projects</a>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container slide-content">
+                <h1>Trusted by 100+ Institutions</h1>
+                <p>Certified safety and unmatched durability backed by a 10-year warranty.</p>
+                <a href="https://wa.me/918169285185" target="_blank" class="btn btn-primary">Get a Quote</a>
+            </div>
         </div>
     </section>
 
     <!-- Key Categories -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Our Product Categories</h2>
+            <h2 class="section-title">Our Collections</h2>
             <div class="category-grid">
                 <div class="category-card">
-                    <div class="category-img"><i class="fas fa-user-graduate fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-img"><i class="fas fa-chair fa-3x" style="color: #bdbdbd;"></i></div>
                     <div class="category-content">
                         <h3>Dual Benches</h3>
                         <p>Standard ergonomic benches for classrooms.</p>
-                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 20px; font-size: 0.8rem; background: transparent; border: 1px solid var(--dark-text); color: var(--dark-text);">View Details</a>
                     </div>
                 </div>
                 <div class="category-card">
-                    <div class="category-img"><i class="fas fa-users fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-img"><i class="fas fa-cubes fa-3x" style="color: #bdbdbd;"></i></div>
                     <div class="category-content">
                         <h3>Modular Desks</h3>
                         <p>Flexible desks for collaborative learning.</p>
-                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 20px; font-size: 0.8rem; background: transparent; border: 1px solid var(--dark-text); color: var(--dark-text);">View Details</a>
                     </div>
                 </div>
                 <div class="category-card">
-                    <div class="category-img"><i class="fas fa-flask fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-img"><i class="fas fa-flask fa-3x" style="color: #bdbdbd;"></i></div>
                     <div class="category-content">
                         <h3>Lab & Library</h3>
                         <p>Chemical-resistant and specialized surfaces.</p>
-                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 20px; font-size: 0.8rem; background: transparent; border: 1px solid var(--dark-text); color: var(--dark-text);">View Details</a>
                     </div>
                 </div>
                 <div class="category-card">
-                    <div class="category-img"><i class="fas fa-chalkboard-teacher fa-3x" style="color: #ccc;"></i></div>
+                    <div class="category-img"><i class="fas fa-chalkboard-teacher fa-3x" style="color: #bdbdbd;"></i></div>
                     <div class="category-content">
                         <h3>Teacher's Furniture</h3>
                         <p>Ergonomic desks and chairs for faculty.</p>
-                        <a href="products.html" class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;">View More</a>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 20px; font-size: 0.8rem; background: transparent; border: 1px solid var(--dark-text); color: var(--dark-text);">View Details</a>
                     </div>
                 </div>
             </div>
@@ -166,11 +211,11 @@
             <h2 class="section-title">Esteemed Clients & Certifications</h2>
             <div class="client-logos">
                 <!-- Placeholders for Logos -->
-                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">SCHOOL A</div>
-                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">COLLEGE B</div>
-                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">INSTITUTE C</div>
-                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">ISO 9001</div>
-                <div style="font-weight: bold; font-size: 1.5rem; color: #ccc;">BIFMA</div>
+                <div style="font-weight: 800; font-size: 1.8rem; color: #90A4AE;">SCHOOL A</div>
+                <div style="font-weight: 800; font-size: 1.8rem; color: #90A4AE;">COLLEGE B</div>
+                <div style="font-weight: 800; font-size: 1.8rem; color: #90A4AE;">INSTITUTE C</div>
+                <div style="font-weight: 800; font-size: 1.8rem; color: #90A4AE;">ISO 9001</div>
+                <div style="font-weight: 800; font-size: 1.8rem; color: #90A4AE;">BIFMA</div>
             </div>
         </div>
     </section>
@@ -196,7 +241,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="inquiry.html">Request Quote</a></li>
+                    <li><a href="https://wa.me/918169285185" target="_blank">Request Quote</a></li>
                 </ul>
             </div>
         </div>
