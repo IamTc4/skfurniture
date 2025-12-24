@@ -640,6 +640,111 @@ ul {
 }
 
 /* Product Detail Page */
+/* Improved Tabs UI */
+.tab-headers {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 2px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6B7280;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.3s;
+    position: relative;
+    top: 2px;
+}
+
+.tab-btn:hover {
+    color: var(--primary-yellow);
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.tab-btn.active {
+    color: var(--dark-text);
+    border-bottom: 3px solid var(--primary-yellow);
+    background-color: transparent;
+}
+
+.tab-content {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 12px 12px;
+    padding: 40px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs-table th, .specs-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.specs-table th {
+    width: 30%;
+    font-weight: 600;
+    color: var(--slate-grey);
+    background-color: #F9FAFB;
+}
+
+.review-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.review-date {
+    color: #9CA3AF;
+    font-size: 0.9rem;
+}
+
+.review-stars {
+    color: var(--primary-yellow);
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
 .product-detail-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
