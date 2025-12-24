@@ -104,7 +104,7 @@
         <!-- Left: Gallery -->
         <div class="product-gallery">
             <div class="gallery-main img-zoom-container" onmouseleave="hideZoom()">
-                <img src="https://via.placeholder.com/600x600?text=Dual+Bench+Side+View" alt="Standard Dual Bench" id="currentImage" style="width:100%; height:auto; display:block;" onmousemove="imageZoom(event)">
+                <img src="img/classroom 2.jpg" alt="Standard Dual Bench" id="currentImage" style="width:100%; height:auto; display:block;" onmousemove="imageZoom(event)">
                 <div id="myresult" class="img-zoom-result"></div>
 
                 <!-- 3D Model Viewer (Hidden by default) -->
@@ -125,10 +125,10 @@
             </div>
 
             <div class="gallery-thumbs">
-                <img src="https://via.placeholder.com/600x600?text=Front+View" class="gallery-thumb active" onclick="changeImage(this.src)">
-                <img src="https://via.placeholder.com/600x600?text=Side+View" class="gallery-thumb" onclick="changeImage(this.src)">
-                <img src="https://via.placeholder.com/600x600?text=Top+View" class="gallery-thumb" onclick="changeImage(this.src)">
-                <img src="https://via.placeholder.com/600x600?text=Detail+View" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="img/classroom 4.jpg" class="gallery-thumb active" onclick="changeImage(this.src)">
+                <img src="img/classroom 5.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="img/classroom 6.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="img/classroom 7.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
             </div>
         </div>
 
@@ -232,9 +232,9 @@
 
                 <h4 style="margin-top: 20px; font-size: 0.9em; color: #666;">Customer Images</h4>
                 <div class="customer-images-grid">
-                    <img src="https://via.placeholder.com/150x150?text=Classroom+Setup" class="customer-img-thumb" onclick="changeImage(this.src)">
-                    <img src="https://via.placeholder.com/150x150?text=Installed+Desks" class="customer-img-thumb" onclick="changeImage(this.src)">
-                    <img src="https://via.placeholder.com/150x150?text=Lab+Tables" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="img/classroom 15.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="img/classroom 12.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="img/scilab.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
                 </div>
             </div>
 
@@ -377,6 +377,94 @@
             const urlParams = new URLSearchParams(window.location.search);
             const productName = urlParams.get('product');
 
+            // Image Database Mapping
+            const imageMap = {
+                // School
+                'School Bench': 'img/classroom 2.jpg',
+                'School Chair': 'img/classroom 4.jpg',
+                'Primary School Desk': 'img/classroom 6.jpg',
+                'Junior School Table And Chair': 'img/classroom 3.jpg',
+                'Class Room Table And Chair': 'img/classroom 10.jpg',
+                'Senior School Furniture': 'img/classroom 8.jpg',
+                'Play School Chair': 'img/kid bench.png',
+                'Kids Chair': 'img/kid bench.png',
+                'Kids Round Table': 'img/classroom 12.jpg',
+                'Nursery School Plastic Furniture': 'img/kid bench.png',
+
+                // Teacher
+                'Teacher Table for Classroom': 'img/staff 1.jpg',
+                'Teacher Table and Chair': 'img/staff 2.jpg',
+
+                // Lab
+                'Maths Lab Table': 'img/scilab.jpg',
+                'General Science Lab Table': 'img/scilab 1.jpg',
+                'Physics Lab Furniture': 'img/scilab.jpg',
+                'Science Lab Furniture': 'img/scilab 1.jpg',
+                'Lab Stool': 'img/Staff .jpg',
+                'Computer Lab Furniture': 'img/scilab.jpg',
+
+                // Classroom
+                'Single Seater Classroom Desk': 'img/classroom 6.jpg',
+                'Single Seater Desk with Chair': 'img/classroom 10.jpg',
+                'Single Seater Open Shelf Desk': 'img/classroom 12.jpg',
+                'Single Seater Combined Desk': 'img/classroom 15 (2).jpg',
+                'Z Shaped Classroom Desk': 'img/classroom 2.jpg',
+                'Classroom Dual Desk': 'img/classroom 7.jpg',
+                'Dual Desk with Shelf': 'img/classroom 8.jpg',
+                'Dual Combined Desk Without Shelf': 'img/classroom 9.jpg',
+                'Two Seater Desk with Chairs': 'img/classroom 5.jpg',
+                'Two Seater Desk with Perforated Seat': 'img/classroom 4.jpg',
+                'Three Seater Combined Desk': 'img/classroom 3.jpg',
+                'Three Seater Classroom Desk': 'img/classroom 15 (3).jpg',
+                'Senior Class Desk': 'img/classroom 15 (4).jpg',
+                'Modern Classroom Desk and Bench': 'img/classroom 11.jpg',
+                'Without Back Desk': 'img/classroom 2.jpg',
+                'Rectangular Pipe Classroom Desk': 'img/classroom 12.jpg',
+
+                // Institutional
+                'Iron Writing Chair': 'img/classroom 15 (2).jpg',
+                'Full Flap Arm Chair': 'img/classroom 15 (3).jpg',
+                'Writing Arm Chair With Basket': 'img/classroom 15 (4).jpg',
+                'Cushioned Seat and Back Arm Chair': 'img/classroom 15.jpg',
+                'Plastic Institutional Chair': 'img/classroom 15 (2).jpg',
+                'Institutional Wooden Chair': 'img/classroom 15 (3).jpg',
+                'Coaching Chair': 'img/classroom 10.jpg',
+                'Coaching Furniture': 'img/classroom 11.jpg',
+                'Library Almirah': 'img/Library 8.jpg',
+                'Staff Room Table': 'img/staff 1.jpg',
+                'Staff Room Furniture': 'img/staff 2.jpg',
+
+                // Library
+                'Library Table with partition': 'img/Library 4.jpg',
+                'College Library Table': 'img/Library 5.jpg',
+                'Modern Library Table': 'img/Library 6.jpg',
+                'Library Table for Teachers and Staff': 'img/Library 7.jpg',
+                'Table With Stool Set': 'img/Library 8.jpg',
+                'Library Wooden Chairs': 'img/Library.jpg',
+                'Library Chair with Cushioned Seat': 'img/Library 2.jpg',
+                'Library Chairs for Staff': 'img/Libray 10.jpg',
+                'Library Book Shelf': 'img/Library 3.jpg',
+                'Wooden Bookshelf': 'img/Library 7.jpg',
+                'Library Rack': 'img/Library 8.jpg',
+                'Newspaper Stand': 'img/Library.jpg',
+                'Magazine Stand': 'img/Library 2.jpg',
+
+                // Office
+                'Office Revolving Chair': 'img/staff 1.jpg',
+                'Office Visitor Chair': 'img/staff 2.jpg',
+                'Office Sofa': 'img/reception.jpg',
+                'Office Table': 'img/admin.jpg',
+                'Conference Room Table': 'img/reception 4.jpg',
+                'Reception Sofa Set': 'img/reception 2.jpg',
+                'Wooden Reception Furniture': 'img/reception 3.jpg',
+                'Office Reception Furniture': 'img/reception.jpg',
+                'Office Filing Cabinet': 'img/Library 8.jpg',
+
+                // Hostel
+                'Hostel Wardrobe': 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=400&q=80',
+                'Cafe Furniture': 'img/canteen.jpg'
+            };
+
             if (productName) {
                 // 1. Update Title
                 document.title = productName + " - skfurniture";
@@ -398,15 +486,26 @@
                 // 5. Update Images
                 const encodedName = encodeURIComponent(productName);
                 const mainImg = document.getElementById('currentImage');
+
+                // Determine image source
+                let imgSrc = imageMap[productName];
+                if (!imgSrc) {
+                    // Fallback to placeholder or generic if not found in map
+                    imgSrc = "img/classroom 2.jpg";
+                }
+
                 if (mainImg) {
-                    mainImg.src = "https://via.placeholder.com/600x600?text=" + encodedName;
+                    mainImg.src = imgSrc;
                     mainImg.alt = productName;
                 }
 
                 const thumbs = document.querySelectorAll('.gallery-thumb');
                 thumbs.forEach((thumb, index) => {
-                    const suffix = ["Front", "Side", "Top", "Detail"][index % 4];
-                    thumb.src = "https://via.placeholder.com/600x600?text=" + encodedName + "+" + suffix;
+                    // For now, reuse the same image for thumbs if we don't have multiple angles
+                    // Or keep using placeholder for detailed views if we only have one main image
+                    // Let's use the main image for all thumbs to avoid broken links, or keep placeholder for "views"
+                    // Better user experience: show the same valid image rather than broken placeholder
+                    thumb.src = imgSrc;
                 });
 
                 // 6. Update Description text
