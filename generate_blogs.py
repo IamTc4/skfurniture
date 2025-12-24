@@ -2,13 +2,28 @@ import os
 import re
 import datetime
 
-# Configuration - Reduced set to avoid file limits
+# Configuration - Reduced set to 20 items
 PRODUCTS = {
     'School Bench': 'img/classroom 2.jpg',
     'School Chair': 'img/classroom 4.jpg',
     'Primary School Desk': 'img/classroom 6.jpg',
     'Junior School Table And Chair': 'img/classroom 3.jpg',
-    'Class Room Table And Chair': 'img/classroom 10.jpg'
+    'Class Room Table And Chair': 'img/classroom 10.jpg',
+    'Senior School Furniture': 'img/classroom 8.jpg',
+    'Play School Chair': 'img/kid bench.png',
+    'Kids Chair': 'img/kid bench.png',
+    'Kids Round Table': 'img/classroom 12.jpg',
+    'Nursery School Plastic Furniture': 'img/kid bench.png',
+    'Teacher Table for Classroom': 'img/staff 1.jpg',
+    'Teacher Table and Chair': 'img/staff 2.jpg',
+    'Maths Lab Table': 'img/scilab.jpg',
+    'General Science Lab Table': 'img/scilab 1.jpg',
+    'Physics Lab Furniture': 'img/scilab.jpg',
+    'Science Lab Furniture': 'img/scilab 1.jpg',
+    'Lab Stool': 'img/Staff .jpg',
+    'Computer Lab Furniture': 'img/scilab.jpg',
+    'Single Seater Classroom Desk': 'img/classroom 6.jpg',
+    'Single Seater Desk with Chair': 'img/classroom 10.jpg'
 }
 
 BLOG_TEMPLATE = """<!DOCTYPE html>
@@ -218,12 +233,7 @@ for product_name, image_path in PRODUCTS.items():
 
     blog_entries.append({'title': title, 'filename': filename, 'date': date_display, 'desc': description})
 
-# Update main blog.html (simple list append or rewrite)
-# For simplicity, I'll rewrite blog.html to list these generated blogs dynamically would be hard without backend,
-# so I'll generate a static list in blog.html
-# Wait, I should read the existing blog.html and replace the list?
-# Or just overwrite it with a new template that lists all of them.
-
+# Update main blog.html
 BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
