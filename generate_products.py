@@ -1,5 +1,6 @@
 import os
 import re
+import urllib.parse
 
 # Read product-detail.html to use as a template
 with open('product-detail.html', 'r', encoding='utf-8') as f:
@@ -97,11 +98,9 @@ for product_name, img_src in image_map.items():
     content = template_content.replace('<title>Standard Dual Bench - skfurniture</title>', f'<title>{product_name} - skfurniture</title>')
 
     # 2. Update Breadcrumb
-    # <a href="solutions.html">Solutions</a> &gt; <span>Standard Dual Bench</span>
     content = content.replace('<span>Standard Dual Bench</span>', f'<span>{product_name}</span>')
 
     # 3. Update H1
-    # <h1 class="product-title">Standard Dual Bench for Classrooms (Heavy Duty)</h1>
     content = re.sub(r'<h1 class="product-title">.*?</h1>', f'<h1 class="product-title">{product_name}</h1>', content)
 
     # 4. SKU
@@ -110,44 +109,30 @@ for product_name, img_src in image_map.items():
     content = re.sub(r'<span class="product-sku">.*?</span>', f'<span class="product-sku">SKU: {sku}</span>', content)
 
     # 5. Main Image
-    # <img src="img/classroom 2.jpg" alt="Standard Dual Bench" id="currentImage"
     content = content.replace('src="img/classroom 2.jpg" alt="Standard Dual Bench" id="currentImage"', f'src="../{img_src}" alt="{product_name}" id="currentImage"')
 
-    # 6. Description Text (this is JS generated in original, but let's pre-fill it in HTML)
+    # 6. Description Text
     desc_text = f"The <strong>{product_name}</strong> by skfurniture is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments."
-    # Find the paragraph in the description tab
-    # <div id="desc" class="tab-content active">\s*<h3.*?</h3>\s*<p.*?>\s*<strong>SK Furniture</strong> presents...
-    # We will replace the inner HTML of the first p tag in #desc or just replace a known block
     search_desc_block = """<p style="margin-bottom: 15px;">
                 <strong>SK Furniture</strong> presents the robust Two Seater Classroom Desk, meticulously designed to meet the evolving needs of modern educational institutions. Engineered for longevity, this desk combines the strength of <strong>CRCA Steel</strong> with the aesthetic appeal of high-grade pre-laminated engineered wood. It is the ideal choice for schools, colleges, and coaching centers looking for furniture that withstands the rigors of daily use while maintaining its pristine condition for years.
             </p>"""
     content = content.replace(search_desc_block, f'<p style="margin-bottom: 15px;">{desc_text}</p>')
 
     # 7. WhatsApp Link
-    # <a href="https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20Standard%20Dual%20Bench%20(SK-DB-001)"
-    import urllib.parse
     encoded_name = urllib.parse.quote(product_name)
     new_wa_href = f'https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20{encoded_name}%20({sku})'
     content = re.sub(r'href="https://wa.me/918169285185\?text=.*?"', f'href="{new_wa_href}"', content)
 
     # 8. Thumbnails
-    # Replace the thumbs manually to avoid JS reliance for initial load
-    # <img src="img/classroom 4.jpg" class="gallery-thumb active"
-    # <img src="img/classroom 5.jpg" class="gallery-thumb"
-    # ...
-    # We need to construct the gallery thumbs block
     thumbs_block_start = '<div class="gallery-thumbs">'
     thumbs_block_end = '</div>'
 
-    # Find content between start and end
     start_idx = content.find(thumbs_block_start)
     end_idx = content.find(thumbs_block_end, start_idx)
 
     if start_idx != -1 and end_idx != -1:
         new_thumbs = '\n'
-        # Main thumb
         new_thumbs += f'                <img src="../{img_src}" class="gallery-thumb active" onclick="changeImage(this.src)">\n'
-        # Extra thumbs
         for i in range(1, 4):
              rot_index = (len(product_name) + i) % len(extra_images)
              extra_img = extra_images[rot_index]
@@ -155,55 +140,48 @@ for product_name, img_src in image_map.items():
 
         content = content[:start_idx + len(thumbs_block_start)] + new_thumbs + '            ' + content[end_idx:]
 
-    # 9. Fix Relative Paths
-    # css/style.css -> ../css/style.css
-    # js/script.js -> ../js/script.js
-    # img/ -> ../img/ (already handled for specific img tags above mostly, but need global replace for others)
-    # <a href="index.html"> -> <a href="../index.html">
-    # Note: We need to be careful not to double replace if we already did ../img
+    # --- Header Modification: Add About Link ---
+    header_search = '<li><a href="index.html">Home</a></li>'
+    header_replace = '<li><a href="../index.html">Home</a></li>\n                <li><a href="../about.html">About</a></li>'
+    content = content.replace(header_search, header_replace)
 
-    # Basic replacements
+    # --- Footer Modification ---
+    footer_copyright_search = '<p>&copy; 2025 skfurniture. All Rights Reserved.</p>'
+    footer_copyright_replace = """<p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+                <div class="developer-credit">
+                    <span>Designed by</span>
+                    <a href="https://developerbee.digital" target="_blank">
+                        DeveloperBee
+                        <img src="../img/Design.jpeg" alt="DeveloperBee Logo">
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://skinterios.com/" style="color: #6B7280; font-size: 0.8rem;">skinterios.com</a>
+                </div>"""
+    content = content.replace(footer_copyright_search, footer_copyright_replace)
+
+    # 9. Fix Relative Paths
     content = content.replace('href="css/style.css"', 'href="../css/style.css"')
     content = content.replace('src="js/script.js"', 'src="../js/script.js"')
-    content = content.replace('src="img/', 'src="../img/')
-    # The previous main image replacement used ../img/, so if we replace img/ with ../img/ globally,
-    # we might get ../../img/ if we are not careful.
-    # Actually, my step 5 used src="../{img_src}". img_src had "img/...". So it became src="../img/...".
-    # If I now replace 'src="img/' with 'src="../img/', it will become 'src="../../img/'.
-    # So I should have done global replace first or be smarter.
 
-    # Let's revert the step 5 change locally in memory or fix it.
-    # Actually, let's just fix the double dots.
-    content = content.replace('src="../../', 'src="../')
+    # Global img fix
+    # We need to replace src="img/ with src="../img/ BUT be careful not to double it if we already did it
+    # Find all src="img/ that are NOT src="../img/
+    # Easiest way: replace all src="img/ with src="../img/, then replace src="../../img/ with src="../img/
+    content = content.replace('src="img/', 'src="../img/')
+    content = content.replace('src="../../img/', 'src="../img/')
 
     # Fix links
-    links = ['index.html', 'solutions.html', 'manufacturing.html', 'services.html', 'projects.html', 'blog.html', 'inquiry.html',
+    links = ['index.html', 'solutions.html', 'manufacturing.html', 'services.html', 'projects.html', 'blog.html', 'inquiry.html', 'about.html',
              'solution-school.html', 'solution-classroom.html', 'solution-institutional.html', 'solution-library.html', 'solution-office.html', 'solution-hostel.html']
 
     for link in links:
-        content = content.replace(f'href="{link}"', f'href="../{link}"')
+        # Avoid replacing already replaced ones
+        if f'href="../{link}"' not in content:
+            content = content.replace(f'href="{link}"', f'href="../{link}"')
 
-    # Also fix links inside dropdown
-    # <a href="solutions.html#classroom">
+    # Fix dropdown links
     content = content.replace('href="solutions.html#', 'href="../solutions.html#')
-
-    # Fix Logo link
-    # <a href="index.html" class="logo"> is covered above
-
-    # Customer images in review tab
-    # <img src="img/classroom 15.jpg" ...
-    # These are caught by src="img/ -> src="../img/ replacement?
-    # I haven't done the global src="img/ replacement yet. Let's do it.
-    content = content.replace('src="img/', 'src="../img/')
-    # Fix potential double ../ from Step 5
-    content = content.replace('src="../../', 'src="../')
-
-    # 10. Disable the dynamic JS loader since we are making static pages?
-    # The JS block at the bottom: document.addEventListener('DOMContentLoaded', function() { ... })
-    # We should probably remove it or comment it out so it doesn't override our static changes.
-    # However, keeping it might be harmless if it doesn't find ?product= param.
-    # But wait, we are not passing ?product= param to these pages. So the JS will not execute the "if (productName)" block.
-    # So it is safe to leave it.
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)

@@ -1357,3 +1357,118 @@ footer {
     opacity: 1;
     transform: scale(1);
 }
+
+/* Interior Design Services Section */
+.services-section {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.services-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: var(--body-text);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Make the first item span 2 columns if screen is wide enough */
+@media (min-width: 900px) {
+    .service-card.main-service {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+    .service-card.main-service img {
+        width: 50% !important;
+        height: auto !important;
+        margin-bottom: 0 !important;
+        margin-right: 30px;
+    }
+}
+
+.service-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.service-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -3px rgba(0,0,0,0.1);
+    border-color: var(--primary-yellow);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Special styling for the 3D PNG if needed */
+.main-3d-img {
+    object-fit: contain !important;
+    background-color: transparent !important;
+}
+
+.service-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--dark-text);
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: var(--body-text);
+    line-height: 1.5;
+}
+
+/* Footer Developer Credit */
+.developer-credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #9CA3AF;
+}
+
+.developer-credit a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-yellow);
+    font-weight: 500;
+}
+
+.developer-credit a:hover {
+    text-decoration: underline;
+}
+
+.developer-credit img {
+    height: 24px;
+    width: auto;
+    border-radius: 4px;
+}

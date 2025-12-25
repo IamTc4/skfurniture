@@ -1,6 +1,7 @@
 import os
 import re
 import datetime
+import urllib.parse
 
 # Configuration - Reduced set to 20 items
 PRODUCTS = {
@@ -77,6 +78,7 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
             </div>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
                 <li><a href="../solutions.html">Solutions</a></li>
                 <li><a href="../manufacturing.html">Manufacturing</a></li>
                 <li><a href="../projects.html">Projects</a></li>
@@ -172,6 +174,7 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About</a></li>
                         <li><a href="../solutions.html">Solutions</a></li>
                         <li><a href="../blog.html">Blog</a></li>
                     </ul>
@@ -184,7 +187,17 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
+                <p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+                <div class="developer-credit">
+                    <span>Designed by</span>
+                    <a href="https://developerbee.digital" target="_blank">
+                        DeveloperBee
+                        <img src="../img/Design.jpeg" alt="DeveloperBee Logo">
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://skinterios.com/" style="color: #6B7280; font-size: 0.8rem;">skinterios.com</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -211,7 +224,6 @@ for product_name, image_path in PRODUCTS.items():
 
     intro_text = f"The <strong>{product_name}</strong> is an essential component of any modern educational facility. As schools evolve, the demand for furniture that supports active learning and provides comfort has skyrocketed."
 
-    import urllib.parse
     product_name_encoded = urllib.parse.quote(product_name)
 
     content = BLOG_TEMPLATE.format(
@@ -260,6 +272,7 @@ BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="solutions.html">Solutions</a></li>
                 <li><a href="manufacturing.html">Manufacturing</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -308,7 +321,17 @@ BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
+                <p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+                <div class="developer-credit">
+                    <span>Designed by</span>
+                    <a href="https://developerbee.digital" target="_blank">
+                        DeveloperBee
+                        <img src="img/Design.jpeg" alt="DeveloperBee Logo">
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://skinterios.com/" style="color: #6B7280; font-size: 0.8rem;">skinterios.com</a>
+                </div>
             </div>
         </div>
     </footer>
