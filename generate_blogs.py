@@ -3,7 +3,7 @@ import re
 import datetime
 import urllib.parse
 
-# Configuration - Reduced set to 20 items
+# Configuration - Reduced set to 20 items to avoid limits
 PRODUCTS = {
     'School Bench': 'img/classroom 2.jpg',
     'School Chair': 'img/classroom 4.jpg',
@@ -165,27 +165,44 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>skfurniture</h3>
-                    <p>Specialists in educational furniture manufacturing.</p>
+            <div class="footer-content">
+                <!-- Contact Column -->
+                <div class="footer-column footer-left">
+                  <h3>Contact & Address</h3>
+                  <ul>
+                    <li><i class="fas fa-user"></i> Pro. Ramji Bhai</li>
+                    <li><i class="fas fa-phone"></i> 8169285185 / 9870075755 / 8879605111</li>
+                    <li><i class="fas fa-user-tie"></i> Mr. Anil Vishwakarma – 8169285185</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                    <li><i class="fas fa-globe"></i> skinterios.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Shop No.4, Shree Co.Op., Sector 7, Plot No.39,
+                        Shree Nagar, Wagle Estate, Thane (W)</li>
+                  </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../about.html">About</a></li>
-                        <li><a href="../solutions.html">Solutions</a></li>
-                        <li><a href="../blog.html">Blog</a></li>
-                    </ul>
+
+                <!-- Quick Links Column -->
+                <div class="footer-column footer-links">
+                  <h3>Quick Links</h3>
+                  <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="../portfolio.html"><i class="fas fa-images"></i> Portfolio</a></li>
+                    <li><a href="../about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="../contact.html"><i class="fas fa-envelope-open-text"></i> Contact</a></li>
+                  </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone-alt" style="color: var(--primary-yellow); margin-right: 10px;"></i> 8169285185</li>
-                    </ul>
+
+                <!-- Social Media Column -->
+                <div class="footer-column footer-right">
+                  <h3>Follow Us</h3>
+                  <div class="footer-social">
+                    <a href="https://wa.me/918169285185" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/sk_furniture_fabrication_works" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:info@skinterios.com"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
             </div>
+
             <div class="copyright">
                 <p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
                 <div class="developer-credit">
@@ -245,7 +262,8 @@ for product_name, image_path in PRODUCTS.items():
 
     blog_entries.append({'title': title, 'filename': filename, 'date': date_display, 'desc': description})
 
-# Update main blog.html
+# Update main blog.html (Needs ROOT level footer)
+# NOTE: blog.html is in root, so links should NOT be ../
 BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,25 +319,44 @@ BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>skfurniture</h3>
-                    <p>Specialists in educational furniture manufacturing.</p>
+            <div class="footer-content">
+                <!-- Contact Column -->
+                <div class="footer-column footer-left">
+                  <h3>Contact & Address</h3>
+                  <ul>
+                    <li><i class="fas fa-user"></i> Pro. Ramji Bhai</li>
+                    <li><i class="fas fa-phone"></i> 8169285185 / 9870075755 / 8879605111</li>
+                    <li><i class="fas fa-user-tie"></i> Mr. Anil Vishwakarma – 8169285185</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                    <li><i class="fas fa-globe"></i> skinterios.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Shop No.4, Shree Co.Op., Sector 7, Plot No.39,
+                        Shree Nagar, Wagle Estate, Thane (W)</li>
+                  </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <ul>
-                        <li><a href="solutions.html">Solutions</a></li>
-                        <li><a href="manufacturing.html">Manufacturing</a></li>
-                    </ul>
+
+                <!-- Quick Links Column -->
+                <div class="footer-column footer-links">
+                  <h3>Quick Links</h3>
+                  <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="portfolio.html"><i class="fas fa-images"></i> Portfolio</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope-open-text"></i> Contact</a></li>
+                  </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone-alt" style="color: var(--primary-yellow); margin-right: 10px;"></i> 8169285185</li>
-                    </ul>
+
+                <!-- Social Media Column -->
+                <div class="footer-column footer-right">
+                  <h3>Follow Us</h3>
+                  <div class="footer-social">
+                    <a href="https://wa.me/918169285185" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/sk_furniture_fabrication_works" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:info@skinterios.com"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
             </div>
+
             <div class="copyright">
                 <p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
                 <div class="developer-credit">
