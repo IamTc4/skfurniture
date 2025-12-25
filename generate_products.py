@@ -6,7 +6,7 @@ import urllib.parse
 with open('product-detail.html', 'r', encoding='utf-8') as f:
     template_content = f.read()
 
-# Define the image map (copied from the JS logic in product-detail.html)
+# Define the image map
 image_map = {
     'School Bench': 'img/classroom 2.jpg',
     'School Chair': 'img/classroom 4.jpg',
@@ -86,9 +86,65 @@ extra_images = [
     'img/classroom 11.jpg', 'img/classroom 12.jpg', 'img/classroom 15.jpg'
 ]
 
-# Function to sanitize filename
 def sanitize_filename(name):
     return re.sub(r'[^\w\s-]', '', name).strip().lower().replace(' ', '-')
+
+# New Footer HTML for Product Pages (links need ../)
+footer_html = """<footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Contact Column -->
+                <div class="footer-column footer-left">
+                  <h3>Contact & Address</h3>
+                  <ul>
+                    <li><i class="fas fa-user"></i> Pro. Ramji Bhai</li>
+                    <li><i class="fas fa-phone"></i> 8169285185 / 9870075755 / 8879605111</li>
+                    <li><i class="fas fa-user-tie"></i> Mr. Anil Vishwakarma – 8169285185</li>
+                    <li><i class="fas fa-envelope"></i> info@skinterios.com</li>
+                    <li><i class="fas fa-globe"></i> skinterios.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Shop No.4, Shree Co.Op., Sector 7, Plot No.39,
+                        Shree Nagar, Wagle Estate, Thane (W)</li>
+                  </ul>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="footer-column footer-links">
+                  <h3>Quick Links</h3>
+                  <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="../portfolio.html"><i class="fas fa-images"></i> Portfolio</a></li>
+                    <li><a href="../about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="../contact.html"><i class="fas fa-envelope-open-text"></i> Contact</a></li>
+                  </ul>
+                </div>
+
+                <!-- Social Media Column -->
+                <div class="footer-column footer-right">
+                  <h3>Follow Us</h3>
+                  <div class="footer-social">
+                    <a href="https://wa.me/918169285185" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/sk_furniture_fabrication_works" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:info@skinterios.com"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
+                <div class="developer-credit">
+                    <span>Designed by</span>
+                    <a href="https://developerbee.digital" target="_blank">
+                        DeveloperBee
+                        <img src="../img/Design.jpeg" alt="DeveloperBee Logo">
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://skinterios.com/" style="color: #6B7280; font-size: 0.8rem;">skinterios.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>"""
 
 for product_name, img_src in image_map.items():
     filename = sanitize_filename(product_name) + '.html'
@@ -140,48 +196,35 @@ for product_name, img_src in image_map.items():
 
         content = content[:start_idx + len(thumbs_block_start)] + new_thumbs + '            ' + content[end_idx:]
 
-    # --- Header Modification: Add About Link ---
-    header_search = '<li><a href="index.html">Home</a></li>'
-    header_replace = '<li><a href="../index.html">Home</a></li>\n                <li><a href="../about.html">About</a></li>'
-    content = content.replace(header_search, header_replace)
-
-    # --- Footer Modification ---
-    footer_copyright_search = '<p>&copy; 2025 skfurniture. All Rights Reserved.</p>'
-    footer_copyright_replace = """<p>&copy; 2026 Sai Krupa Furniture & Fabrication Works. All Rights Reserved.</p>
-                <div class="developer-credit">
-                    <span>Designed by</span>
-                    <a href="https://developerbee.digital" target="_blank">
-                        DeveloperBee
-                        <img src="../img/Design.jpeg" alt="DeveloperBee Logo">
-                    </a>
-                </div>
-                <div style="text-align: center; margin-top: 10px;">
-                    <a href="https://skinterios.com/" style="color: #6B7280; font-size: 0.8rem;">skinterios.com</a>
-                </div>"""
-    content = content.replace(footer_copyright_search, footer_copyright_replace)
-
     # 9. Fix Relative Paths
     content = content.replace('href="css/style.css"', 'href="../css/style.css"')
     content = content.replace('src="js/script.js"', 'src="../js/script.js"')
 
     # Global img fix
-    # We need to replace src="img/ with src="../img/ BUT be careful not to double it if we already did it
-    # Find all src="img/ that are NOT src="../img/
-    # Easiest way: replace all src="img/ with src="../img/, then replace src="../../img/ with src="../img/
     content = content.replace('src="img/', 'src="../img/')
     content = content.replace('src="../../img/', 'src="../img/')
+    content = content.replace('src="../../', 'src="../')
 
     # Fix links
     links = ['index.html', 'solutions.html', 'manufacturing.html', 'services.html', 'projects.html', 'blog.html', 'inquiry.html', 'about.html',
              'solution-school.html', 'solution-classroom.html', 'solution-institutional.html', 'solution-library.html', 'solution-office.html', 'solution-hostel.html']
 
     for link in links:
-        # Avoid replacing already replaced ones
-        if f'href="../{link}"' not in content:
-            content = content.replace(f'href="{link}"', f'href="../{link}"')
+        content = content.replace(f'href="{link}"', f'href="../{link}"')
 
     # Fix dropdown links
     content = content.replace('href="solutions.html#', 'href="../solutions.html#')
+
+    # --- Header Modification: Add About Link ---
+    if '<li><a href="../about.html">About</a></li>' not in content:
+        header_search = '<li><a href="../index.html">Home</a></li>'
+        header_replace = '<li><a href="../index.html">Home</a></li>\n                <li><a href="../about.html">About</a></li>'
+        content = content.replace(header_search, header_replace)
+
+    # --- Replace Entire Footer ---
+    # Find footer block
+    footer_regex = re.compile(r'<footer>.*?</footer>', re.DOTALL)
+    content = footer_regex.sub(footer_html, content)
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
