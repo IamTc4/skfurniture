@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="canonical" href="https://skfurniture.com/product-detail.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Revolving Chair - skfurniture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Model Viewer for 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.0/model-viewer.min.js"></script>
+    <style>
+        .img-zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .img-zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.4);
+            visibility: hidden;
+        }
+        .img-zoom-result {
+            border: 1px solid #d4d4d4;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 105%;
+            z-index: 999;
+            background-repeat: no-repeat;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .customer-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .customer-img-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: transform 0.2s;
+        }
+        .customer-img-thumb:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        model-viewer {
+            width: 100%;
+            height: 400px;
+            background-color: #f5f5f5;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-layer-group"></i> skfurniture
+            </a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="../solutions.html">Solutions <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="../solution-school.html">School Furniture</a>
+                        <a href="../solution-classroom.html">Classroom Desks</a>
+                        <a href="../solution-institutional.html">Institutional</a>
+                        <a href="../solution-library.html">Library</a>
+                        <a href="../solution-office.html">Office</a>
+                        <a href="../solution-hostel.html">Hostel & Other</a>
+                    </div>
+                </li>
+                <li><a href="../manufacturing.html">Manufacturing</a></li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../inquiry.html" class="btn btn-primary" style="padding: 10px 24px; color: #212121;">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a> &gt; <a href="../solutions.html">Solutions</a> &gt; <span>Office Revolving Chair</span>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="container product-detail-layout">
+        <!-- Left: Gallery -->
+        <div class="product-gallery">
+            <div class="gallery-main img-zoom-container" onmouseleave="hideZoom()">
+                <img src="../img/staff 1.jpg" alt="Office Revolving Chair" id="currentImage" style="width:100%; height:auto; display:block;" onmousemove="imageZoom(event)">
+                <div id="myresult" class="img-zoom-result"></div>
+
+                <!-- 3D Model Viewer (Hidden by default) -->
+                <model-viewer id="modelViewer"
+                    src="https://modelviewer.dev/shared-assets/models/Chair.glb"
+                    ios-src="https://modelviewer.dev/shared-assets/models/Chair.usdz"
+                    alt="A 3D model of a chair"
+                    ar
+                    auto-rotate
+                    camera-controls>
+                </model-viewer>
+            </div>
+
+            <div style="text-align: center; margin: 10px 0;">
+                <button class="btn btn-outline btn-sm" onclick="toggle3DView()">
+                    <i class="fas fa-cube"></i> View in 3D / AR
+                </button>
+            </div>
+
+            <div class="gallery-thumbs">
+                <img src="../img/staff 1.jpg" class="gallery-thumb active" onclick="changeImage(this.src)">
+                <img src="../img/classroom 15.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="../img/classroom 2.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
+                <img src="../img/classroom 3.jpg" class="gallery-thumb" onclick="changeImage(this.src)">
+            </div>
+        </div>
+
+        <!-- Right: Info -->
+        <div class="product-info-col">
+            <div class="product-meta">
+                <h1 class="product-title">Office Revolving Chair</h1>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <a href="#" class="brand-link" style="color: var(--link-blue);">Visit the skfurniture Store</a>
+                    <span class="product-sku">SKU: SK-ORC-001</span>
+                </div>
+
+                <div class="ratings" style="margin-bottom: 20px;">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star-half-alt text-warning"></i>
+                    <span class="rating-count" style="color: #666; font-size: 0.9em;">(142 Verified Reviews)</span>
+                </div>
+            </div>
+
+            <div class="bulk-quote-box">
+                <p class="price-label" style="color: #666; font-size: 0.9em;">Bulk Pricing Available</p>
+                <div style="display: flex; align-items: baseline;">
+                    <span class="bulk-price">Request Quote</span>
+                    <span style="margin-left: 10px; color: #166534; font-size: 0.9em; font-weight: 600;"><i class="fas fa-check"></i> Volume Discounts Applied</span>
+                </div>
+                <p style="color: #666; font-size: 0.85em; margin-bottom: 20px;">Inclusive of GST. Shipping calculated at checkout.</p>
+
+                <a href="https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20Office%20Revolving%20Chair%20(SK-ORC-001)" class="btn btn-primary btn-block" style="border-radius: 8px; justify-content: center;">
+                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Get Bulk Quote
+                </a>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="#" style="font-size: 0.9em; color: var(--link-blue); text-decoration: underline;"><i class="fas fa-file-download"></i> Download Technical Spec Sheet</a>
+                </div>
+            </div>
+
+            <div class="feature-bullets">
+                <h4 style="margin-bottom: 15px;">About this item</h4>
+                <ul class="specs-list">
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Heavy-Duty Construction:</strong> Built with 16-gauge (1.5mm) CRCA round/square steel pipes, ensuring superior load-bearing capacity and stability.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Premium Wood Finish:</strong> 18mm/25mm thick Action Tesa Pre-Laminated Board (MDF/PLB) with 2mm PVC Edge Banding for moisture resistance and smooth edges.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>7-Tank Anti-Rust Treatment:</strong> Steel frames undergo rigorous chemical degreasing, phosphating, and passivation before powder coating.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Safety & Ergonomics:</strong> Zero-sharp edges with injection-molded caps and anthropometrically designed seat angles to reduce student fatigue.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Floor Protection:</strong> Equipped with heavy-duty nylon levelers/bushings to prevent floor scratches and reduce noise.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="container" style="margin-bottom: 80px;">
+        <div class="tab-headers">
+            <button class="tab-btn active" onclick="openTab(event, 'desc')">Product Description</button>
+            <button class="tab-btn" onclick="openTab(event, 'specs')">Technical Specifications</button>
+            <button class="tab-btn" onclick="openTab(event, 'reviews')">Customer Reviews</button>
+        </div>
+
+        <div id="desc" class="tab-content active">
+            <h3 style="margin-bottom: 20px;">Premium Quality Dual Desk for Schools & Colleges</h3>
+            <p style="margin-bottom: 15px;">The <strong>Office Revolving Chair</strong> by skfurniture is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments.</p>
+
+            <h4 style="margin-top: 25px; margin-bottom: 15px; color: var(--dark-text);">Key Features & Benefits</h4>
+            <ul style="list-style-type: disc; margin-left: 20px; color: var(--body-text); margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;"><strong>Ergonomic Comfort:</strong> The desk height and seat inclination are compliant with <em>IS 4837:1990</em> standards, ensuring students maintain a healthy posture, reducing back strain during extended lectures.</li>
+                <li style="margin-bottom: 10px;"><strong>Superior Durability:</strong> The metal frame is MIG welded for seamless joints and coated with <strong>Epoxy Polyester Powder (60-70 microns)</strong>, offering exceptional resistance to scratches, chipping, and corrosion.</li>
+                <li style="margin-bottom: 10px;"><strong>Smart Storage:</strong> Includes a spacious integrated wire mesh or sheet metal shelf below the desk top, allowing students to store bags and books clutter-free.</li>
+                <li style="margin-bottom: 10px;"><strong>Child-Safe Design:</strong> All corners are rounded or capped with high-quality ABS/Nylon buffers to prevent accidental injuries in active classroom environments.</li>
+            </ul>
+
+            <h4 style="margin-top: 25px; margin-bottom: 15px; color: var(--dark-text);">Application Areas</h4>
+            <p>Perfect for Primary Schools, High Schools, University Lecture Halls, Training Centers, and Computer Labs.</p>
+        </div>
+
+        <div id="specs" class="tab-content">
+            <table class="specs-table">
+                <tbody>
+                    <tr><th>Material</th><td>High-Grade CRCA Steel & MDF/PLB (Action Tesa / Vir)</td></tr>
+                    <tr><th>Frame Thickness</th><td>1.5mm (16 Gauge) Round/Square Pipe (ERW)</td></tr>
+                    <tr><th>Desk Top Size</th><td>1050mm x 400mm (Standard Dual)</td></tr>
+                    <tr><th>Seat Height</th><td>450mm (Standard Senior) / Custom for Junior</td></tr>
+                    <tr><th>Finish</th><td>Epoxy Powder Coated (Salt Spray Tested 1000 Hours)</td></tr>
+                    <tr><th>Edge Banding</th><td>2mm PVC Machine Pressed (Rehau or equivalent)</td></tr>
+                    <tr><th>Warranty</th><td>5 Years Manufacturer Warranty against Structural Defects</td></tr>
+                    <tr><th>Certifications</th><td>ISO 9001:2015, ISO 14001:2015, BIFMA Compliant, GreenGuard</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="reviews" class="tab-content">
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="reviewer-name">Principal, St. Xavier's High School</span>
+                    <span class="review-date">March 10, 2024</span>
+                </div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Quality is exceptional. Highly recommended."</p>
+
+                <h4 style="margin-top: 20px; font-size: 0.9em; color: #666;">Customer Images</h4>
+                <div class="customer-images-grid">
+                    <img src="../img/classroom 15.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="../img/classroom 12.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
+                    <img src="../img/scilab.jpg" class="customer-img-thumb" onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="reviewer-name">Admin, Ryan International</span>
+                    <span class="review-date">Feb 22, 2024</span>
+                </div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Fast delivery to our Navi Mumbai campus. The dual desks are sturdy."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>skfurniture</h3>
+                    <p>Specialists in educational furniture manufacturing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="../solution-school.html">School Furniture</a></li>
+                        <li><a href="../solution-classroom.html">Classroom Desks</a></li>
+                        <li><a href="../solution-institutional.html">Institutional</a></li>
+                        <li><a href="../solution-library.html">Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../manufacturing.html">Manufacturing</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="color: var(--primary-yellow); margin-right: 10px;"></i> 8169285185</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 skfurniture. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Image Zoom Logic
+        function imageZoom(e) {
+            const img = document.getElementById("currentImage");
+            const result = document.getElementById("myresult");
+
+            // Only zoom if 3D viewer is hidden
+            if(document.getElementById("modelViewer").style.display === "block") return;
+
+            result.style.display = "block";
+
+            // Calculate cursor position
+            const { left, top, width, height } = img.getBoundingClientRect();
+            const x = e.clientX - left;
+            const y = e.clientY - top;
+
+            // Calculate percentage
+            let xPerc = (x / width) * 100;
+            let yPerc = (y / height) * 100;
+
+            // Boundary checks
+            if (xPerc > 100) xPerc = 100;
+            if (xPerc < 0) xPerc = 0;
+            if (yPerc > 100) yPerc = 100;
+            if (yPerc < 0) yPerc = 0;
+
+            // Set background image and position
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (width * 2) + "px " + (height * 2) + "px"; // 2x Zoom
+            result.style.backgroundPosition = (xPerc) + "% " + (yPerc) + "%";
+        }
+
+        function hideZoom() {
+            document.getElementById("myresult").style.display = "none";
+        }
+
+        // 3D Viewer Toggle
+        function toggle3DView() {
+            const img = document.getElementById("currentImage");
+            const viewer = document.getElementById("modelViewer");
+            const btn = document.querySelector("button[onclick='toggle3DView()']");
+
+            if (viewer.style.display === "none" || viewer.style.display === "") {
+                img.style.display = "none";
+                viewer.style.display = "block";
+                btn.innerHTML = '<i class="fas fa-image"></i> View Photos';
+                hideZoom(); // Ensure zoom pane is gone
+            } else {
+                img.style.display = "block";
+                viewer.style.display = "none";
+                btn.innerHTML = '<i class="fas fa-cube"></i> View in 3D / AR';
+            }
+        }
+
+        function changeImage(src) {
+            // Reset to image view if in 3D mode
+            const img = document.getElementById("currentImage");
+            const viewer = document.getElementById("modelViewer");
+            if (viewer.style.display === "block") {
+                toggle3DView();
+            }
+
+            img.src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('active'));
+            // If the source was a thumb click
+            if(event.target.classList.contains('gallery-thumb')) {
+                event.target.classList.add('active');
+            }
+        }
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        // Dynamic Product Loader
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product');
+
+            // Image Database Mapping
+            const imageMap = {
+                // School
+                'School Bench': 'img/classroom 2.jpg',
+                'School Chair': 'img/classroom 4.jpg',
+                'Primary School Desk': 'img/classroom 6.jpg',
+                'Junior School Table And Chair': 'img/classroom 3.jpg',
+                'Class Room Table And Chair': 'img/classroom 10.jpg',
+                'Senior School Furniture': 'img/classroom 8.jpg',
+                'Play School Chair': 'img/kid bench.png',
+                'Kids Chair': 'img/kid bench.png',
+                'Kids Round Table': 'img/classroom 12.jpg',
+                'Nursery School Plastic Furniture': 'img/kid bench.png',
+
+                // Teacher
+                'Teacher Table for Classroom': 'img/staff 1.jpg',
+                'Teacher Table and Chair': 'img/staff 2.jpg',
+
+                // Lab
+                'Maths Lab Table': 'img/scilab.jpg',
+                'General Science Lab Table': 'img/scilab 1.jpg',
+                'Physics Lab Furniture': 'img/scilab.jpg',
+                'Science Lab Furniture': 'img/scilab 1.jpg',
+                'Lab Stool': 'img/Staff .jpg',
+                'Computer Lab Furniture': 'img/scilab.jpg',
+
+                // Classroom
+                'Single Seater Classroom Desk': 'img/classroom 6.jpg',
+                'Single Seater Desk with Chair': 'img/classroom 10.jpg',
+                'Single Seater Open Shelf Desk': 'img/classroom 12.jpg',
+                'Single Seater Combined Desk': 'img/classroom 15 (2).jpg',
+                'Z Shaped Classroom Desk': 'img/classroom 2.jpg',
+                'Classroom Dual Desk': 'img/classroom 7.jpg',
+                'Dual Desk with Shelf': 'img/classroom 8.jpg',
+                'Dual Combined Desk Without Shelf': 'img/classroom 9.jpg',
+                'Two Seater Desk with Chairs': 'img/classroom 5.jpg',
+                'Two Seater Desk with Perforated Seat': 'img/classroom 4.jpg',
+                'Three Seater Combined Desk': 'img/classroom 3.jpg',
+                'Three Seater Classroom Desk': 'img/classroom 15 (3).jpg',
+                'Senior Class Desk': 'img/classroom 15 (4).jpg',
+                'Modern Classroom Desk and Bench': 'img/classroom 11.jpg',
+                'Without Back Desk': 'img/classroom 2.jpg',
+                'Rectangular Pipe Classroom Desk': 'img/classroom 12.jpg',
+
+                // Institutional
+                'Iron Writing Chair': 'img/classroom 15 (2).jpg',
+                'Full Flap Arm Chair': 'img/classroom 15 (3).jpg',
+                'Writing Arm Chair With Basket': 'img/classroom 15 (4).jpg',
+                'Cushioned Seat and Back Arm Chair': 'img/classroom 15.jpg',
+                'Plastic Institutional Chair': 'img/classroom 15 (2).jpg',
+                'Institutional Wooden Chair': 'img/classroom 15 (3).jpg',
+                'Coaching Chair': 'img/classroom 10.jpg',
+                'Coaching Furniture': 'img/classroom 11.jpg',
+                'Library Almirah': 'img/Library 8.jpg',
+                'Staff Room Table': 'img/staff 1.jpg',
+                'Staff Room Furniture': 'img/staff 2.jpg',
+
+                // Library
+                'Library Table with partition': 'img/Library 4.jpg',
+                'College Library Table': 'img/Library 5.jpg',
+                'Modern Library Table': 'img/Library 6.jpg',
+                'Library Table for Teachers and Staff': 'img/Library 7.jpg',
+                'Table With Stool Set': 'img/Library 8.jpg',
+                'Library Wooden Chairs': 'img/Library.jpg',
+                'Library Chair with Cushioned Seat': 'img/Library 2.jpg',
+                'Library Chairs for Staff': 'img/Libray 10.jpg',
+                'Library Book Shelf': 'img/Library 3.jpg',
+                'Wooden Bookshelf': 'img/Library 7.jpg',
+                'Library Rack': 'img/Library 8.jpg',
+                'Newspaper Stand': 'img/Library.jpg',
+                'Magazine Stand': 'img/Library 2.jpg',
+
+                // Office
+                'Office Revolving Chair': 'img/staff 1.jpg',
+                'Office Visitor Chair': 'img/staff 2.jpg',
+                'Office Sofa': 'img/reception.jpg',
+                'Office Table': 'img/admin.jpg',
+                'Conference Room Table': 'img/reception 4.jpg',
+                'Reception Sofa Set': 'img/reception 2.jpg',
+                'Wooden Reception Furniture': 'img/reception 3.jpg',
+                'Office Reception Furniture': 'img/reception.jpg',
+                'Office Filing Cabinet': 'img/Library 8.jpg',
+
+                // Hostel
+                'Hostel Wardrobe': 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=400&q=80',
+                'Cafe Furniture': 'img/canteen.jpg'
+            };
+
+            if (productName) {
+                // 1. Update Title
+                document.title = productName + " - skfurniture";
+
+                // 2. Update Breadcrumb
+                const breadcrumbSpan = document.querySelector('.breadcrumb span');
+                if (breadcrumbSpan) breadcrumbSpan.textContent = productName;
+
+                // 3. Update H1
+                const productTitle = document.querySelector('.product-title');
+                if (productTitle) productTitle.textContent = productName;
+
+                // 4. Generate/Update SKU
+                const acronym = productName.split(' ').map(w => w[0].toUpperCase()).join('').substring(0, 4);
+                const sku = "SK-" + acronym + "-001";
+                const skuEl = document.querySelector('.product-sku');
+                if (skuEl) skuEl.textContent = "SKU: " + sku;
+
+                // 5. Update Images
+                const encodedName = encodeURIComponent(productName);
+                const mainImg = document.getElementById('currentImage');
+
+                // Determine image source
+                let imgSrc = imageMap[productName];
+                if (!imgSrc) {
+                    // Fallback to placeholder or generic if not found in map
+                    imgSrc = "img/classroom 2.jpg";
+                }
+
+                if (mainImg) {
+                    mainImg.src = imgSrc;
+                    mainImg.alt = productName;
+                }
+
+                const extraImages = [
+                    'img/classroom 2.jpg', 'img/classroom 3.jpg', 'img/classroom 4.jpg',
+                    'img/classroom 5.jpg', 'img/classroom 6.jpg', 'img/classroom 7.jpg',
+                    'img/classroom 8.jpg', 'img/classroom 9.jpg', 'img/classroom 10.jpg',
+                    'img/classroom 11.jpg', 'img/classroom 12.jpg', 'img/classroom 15.jpg'
+                ];
+
+                const thumbs = document.querySelectorAll('.gallery-thumb');
+                thumbs.forEach((thumb, index) => {
+                    if (index === 0) {
+                        thumb.src = imgSrc;
+                    } else {
+                        // Pick a random image from extraImages to show variety
+                        // We use a deterministic way based on index and product name length to keep it consistent per product if possible
+                        // or just simple modulo
+                        const rotIndex = (productName.length + index) % extraImages.length;
+                        thumb.src = extraImages[rotIndex];
+                    }
+                });
+
+                // 6. Update Description text
+                const descTab = document.querySelector('#desc p');
+                if (descTab) {
+                    descTab.innerHTML = `The <strong>${productName}</strong> by skfurniture is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments.`;
+                }
+
+                // 7. Update Bulk Quote Whatsapp Link
+                const waBtn = document.querySelector('a[href^="https://wa.me"]');
+                if (waBtn) {
+                     waBtn.href = `https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20${encodedName}%20(${sku})`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
