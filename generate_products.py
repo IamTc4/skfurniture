@@ -77,7 +77,13 @@ image_map = {
     'Office Reception Furniture': 'img/reception.jpg',
     'Office Filing Cabinet': 'img/Library 8.jpg',
     'Hostel Wardrobe': 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=400&q=80',
-    'Cafe Furniture': 'img/canteen.jpg'
+    'Cafe Furniture': 'img/canteen.jpg',
+    'Whiteboard': 'img/whiteboard.jpg',
+    'Blackboard': 'img/blackboard.jpg',
+    'Desk Bench': 'img/desk-bench.png',
+    'Podium': 'img/podium.jpg',
+    'Podium2': 'img/podium2.jpg',
+    'Stand': 'img/stand.jpg'
 }
 
 extra_images = [
@@ -152,7 +158,7 @@ for product_name, img_src in image_map.items():
     filepath = os.path.join('product', filename)
 
     # 1. Update Title
-    content = template_content.replace('<title>Standard Dual Bench - skfurniture</title>', f'<title>{product_name} - skfurniture</title>')
+    content = template_content.replace('<title>Standard Dual Bench - skfurniture</title>', f'<title>{product_name} - skinterios</title>')
 
     # 2. Update Breadcrumb
     content = content.replace('<span>Standard Dual Bench</span>', f'<span>{product_name}</span>')
@@ -169,7 +175,7 @@ for product_name, img_src in image_map.items():
     content = content.replace('src="img/classroom 2.jpg" alt="Standard Dual Bench" id="currentImage"', f'src="../{img_src}" alt="{product_name}" id="currentImage"')
 
     # 6. Description Text
-    desc_text = f"The <strong>{product_name}</strong> by skfurniture is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments."
+    desc_text = f"The <strong>{product_name}</strong> by skinterios is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments."
     search_desc_block = """<p style="margin-bottom: 15px;">
                 <strong>SK Furniture</strong> presents the robust Two Seater Classroom Desk, meticulously designed to meet the evolving needs of modern educational institutions. Engineered for longevity, this desk combines the strength of <strong>CRCA Steel</strong> with the aesthetic appeal of high-grade pre-laminated engineered wood. It is the ideal choice for schools, colleges, and coaching centers looking for furniture that withstands the rigors of daily use while maintaining its pristine condition for years.
             </p>"""
@@ -215,6 +221,10 @@ for product_name, img_src in image_map.items():
         header_search = '<li><a href="../index.html">Home</a></li>'
         header_replace = '<li><a href="../index.html">Home</a></li>\n                <li><a href="../about.html">About</a></li>'
         content = content.replace(header_search, header_replace)
+
+    # --- Fix Header Logo Text ---
+    content = content.replace('skfurniture', 'skinterios')
+
 
     # --- Replace Entire Footer ---
     footer_regex = re.compile(r'<footer>.*?</footer>', re.DOTALL)
