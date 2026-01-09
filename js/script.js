@@ -118,4 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(sec => observer.observe(sec));
     techProcesses.forEach(tp => observer.observe(tp));
+    // Generic Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Existing Sections Observer (Kept for backward compatibility if needed, or merged)
+    // The previous code handled .section.animate separately. We can leave it or enhance it.
+    // For now, let's keep the .reveal system independent for new control.
 });
