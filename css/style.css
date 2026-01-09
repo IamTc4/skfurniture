@@ -274,6 +274,25 @@ ul {
         /* JS toggle needed for mobile */
         display: block;
     }
+
+    /* Mobile Header Adjustments */
+    .navbar {
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hamburger {
+        margin-right: 10px;
+    }
+
+    /* Adjust Mobile Menu Top Position to match new header height */
+    .nav-links {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
 }
 
 /* Hero Section (Scrolling Background) */
@@ -986,6 +1005,24 @@ footer {
         /* Force single column on smaller screens if needed, otherwise rely on minmax */
         gap: 24px;
     }
+
+    /* Fix H2 Visibility in Cards */
+    .product-info h3,
+    .service-card h2,
+    .blog-card h3 {
+        font-size: 1.1rem !important;
+        white-space: normal;
+        overflow: visible;
+    }
+
+    /* Reduce Service Spacing */
+    .services-intro {
+        margin-bottom: 20px;
+    }
+
+    .services-grid {
+        gap: 20px;
+    }
 }
 
 
@@ -1278,7 +1315,7 @@ footer {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
 }
