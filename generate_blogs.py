@@ -2,7 +2,6 @@ import os
 import re
 import datetime
 import urllib.parse
-import json
 
 # Configuration - Reduced set to 20 items to avoid limits
 PRODUCTS = {
@@ -62,11 +61,6 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
       "datePublished": "{date}",
       "dateModified": "{date}"
     }}
-    </script>
-
-    <!-- Schema.org FAQPage -->
-    <script type="application/ld+json">
-    {faq_schema}
     </script>
 </head>
 <body>
@@ -132,12 +126,6 @@ BLOG_TEMPLATE = """<!DOCTYPE html>
 
                         <h2 style="margin-top: 30px; margin-bottom: 15px;">Serving Schools in Mumbai, Thane & Pune</h2>
                         <p>We understand the local needs of educational institutions. Whether you are a small coaching class in Thane or a large international school in Pune, our logistics team ensures timely delivery and professional installation.</p>
-
-                        <!-- Visible FAQ Section -->
-                        <h2 style="margin-top: 30px; margin-bottom: 15px;">Frequently Asked Questions</h2>
-                        <div class="faq-section">
-                            {visible_faqs}
-                        </div>
 
                         <div style="background-color: #F3F4F6; padding: 20px; border-left: 4px solid var(--primary-yellow); margin-top: 30px;">
                             <h3 style="margin-bottom: 10px;">Looking for a Quote?</h3>
@@ -255,52 +243,6 @@ for product_name, image_path in PRODUCTS.items():
 
     product_name_encoded = urllib.parse.quote(product_name)
 
-    # FAQ Generation
-    faqs = [
-        {
-            "question": f"What materials are used in the {product_name}?",
-            "answer": f"The {product_name} is built using heavy-duty CRCA steel frames and high-quality pre-laminated MDF or plywood tops, ensuring durability and safety."
-        },
-        {
-            "question": f"Is the {product_name} customizable?",
-            "answer": "Yes, we offer customization in terms of dimensions, colors, and heights to suit Primary, Junior, and Senior school students."
-        },
-        {
-            "question": "Do you deliver to Pune and Thane?",
-            "answer": "Absolutely. We are based in Thane and have a robust logistics network covering Mumbai, Thane, Pune, and Navi Mumbai."
-        }
-    ]
-
-    # Schema Construction
-    faq_schema_data = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": []
-    }
-
-    visible_faqs = ""
-
-    for faq in faqs:
-        # Schema
-        faq_schema_data["mainEntity"].append({
-            "@type": "Question",
-            "name": faq["question"],
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq["answer"]
-            }
-        })
-
-        # Visible HTML
-        visible_faqs += f"""
-        <div style="margin-bottom: 20px;">
-            <h4 style="font-size: 1.1rem; margin-bottom: 5px; color: #37474F;">{faq['question']}</h4>
-            <p style="margin-bottom: 0;">{faq['answer']}</p>
-        </div>
-        """
-
-    faq_schema_json = json.dumps(faq_schema_data, indent=4)
-
     content = BLOG_TEMPLATE.format(
         filename=filename,
         title=title,
@@ -312,9 +254,7 @@ for product_name, image_path in PRODUCTS.items():
         date_display=date_display,
         intro_text=intro_text,
         product_name=product_name,
-        product_name_encoded=product_name_encoded,
-        faq_schema=faq_schema_json,
-        visible_faqs=visible_faqs
+        product_name_encoded=product_name_encoded
     )
 
     with open(os.path.join('blog', filename), 'w', encoding='utf-8') as f:
@@ -323,6 +263,7 @@ for product_name, image_path in PRODUCTS.items():
     blog_entries.append({'title': title, 'filename': filename, 'date': date_display, 'desc': description})
 
 # Update main blog.html (Needs ROOT level footer)
+# NOTE: blog.html is in root, so links should NOT be ../
 BLOG_LIST_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
