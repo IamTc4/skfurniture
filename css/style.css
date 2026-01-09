@@ -142,7 +142,7 @@ ul {
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--primary-yellow);
+    color: var(--dark-text);
     display: flex;
     align-items: center;
     letter-spacing: -0.025em;
@@ -384,12 +384,6 @@ ul {
 /* Sections */
 .section {
     padding: 80px 0;
-}
-
-@media (max-width: 768px) {
-    .section {
-        padding: 40px 0;
-    }
 }
 
 .bg-light {
@@ -1428,6 +1422,30 @@ footer {
     line-height: 1.5;
 }
 
+.main-service {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .main-service {
+        grid-column: span 2;
+    }
+}
+
+.main-service img {
+    width: 50%;
+    height: 100%;
+    object-fit: contain;
+    background: #f0f0f0;
+}
+
+.main-service div {
+    padding: 20px;
+}
 
 /* DeveloperBee Credit */
 .developer-credit {
