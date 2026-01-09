@@ -1,7 +1,6 @@
 import os
 import re
 import urllib.parse
-import json
 
 # Read product-detail.html to use as a template
 with open('product-detail.html', 'r', encoding='utf-8') as f:
@@ -96,7 +95,7 @@ extra_images = [
 def sanitize_filename(name):
     return re.sub(r'[^\w\s-]', '', name).strip().lower().replace(' ', '-')
 
-# New Footer HTML for Product Pages
+# New Footer HTML for Product Pages (links need ../)
 footer_html = """<footer>
         <div class="container">
             <div class="footer-content">
@@ -189,8 +188,10 @@ for product_name, img_src in image_map.items():
     # 8. Thumbnails
     thumbs_block_start = '<div class="gallery-thumbs">'
     thumbs_block_end = '</div>'
+
     start_idx = content.find(thumbs_block_start)
     end_idx = content.find(thumbs_block_end, start_idx)
+
     if start_idx != -1 and end_idx != -1:
         new_thumbs = '\n'
         new_thumbs += f'                <img src="../{img_src}" class="gallery-thumb active" onclick="changeImage(this.src)">\n'
@@ -198,11 +199,14 @@ for product_name, img_src in image_map.items():
              rot_index = (len(product_name) + i) % len(extra_images)
              extra_img = extra_images[rot_index]
              new_thumbs += f'                <img src="../{extra_img}" class="gallery-thumb" onclick="changeImage(this.src)">\n'
+
         content = content[:start_idx + len(thumbs_block_start)] + new_thumbs + '            ' + content[end_idx:]
 
     # 9. Fix Relative Paths
     content = content.replace('href="css/style.css"', 'href="../css/style.css"')
     content = content.replace('src="js/script.js"', 'src="../js/script.js"')
+
+    # Global img fix
     content = content.replace('src="img/', 'src="../img/')
     content = content.replace('src="../../img/', 'src="../img/')
     content = content.replace('src="../../', 'src="../')
@@ -210,6 +214,7 @@ for product_name, img_src in image_map.items():
     # Fix links
     links = ['index.html', 'solutions.html', 'manufacturing.html', 'services.html', 'projects.html', 'blog.html', 'inquiry.html', 'about.html',
              'solution-school.html', 'solution-classroom.html', 'solution-institutional.html', 'solution-library.html', 'solution-office.html', 'solution-hostel.html']
+
     for link in links:
         content = content.replace(f'href="{link}"', f'href="../{link}"')
 
@@ -227,29 +232,11 @@ for product_name, img_src in image_map.items():
 
 
     # --- Replace Entire Footer ---
+    # Find footer block
     footer_regex = re.compile(r'<footer>.*?</footer>', re.DOTALL)
     content = footer_regex.sub(footer_html, content)
-
-    # --- PRODUCT SCHEMA INJECTION ---
-    # Removed "offers" to prevent Google Merchant Center / Rich Snippet errors for missing price.
-    schema_data = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": product_name,
-        "image": f"https://skfurniture.com/{img_src}",
-        "description": desc_text,
-        "sku": sku,
-        "brand": {
-            "@type": "Brand",
-            "name": "skfurniture"
-        }
-    }
-    schema_script = f'\n    <script type="application/ld+json">\n    {json.dumps(schema_data, indent=4)}\n    </script>\n'
-
-    # Inject before </head>
-    content = content.replace('</head>', f'{schema_script}</head>')
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
 
-print("Generated product pages with Schema.")
+print("Generated product pages.")
