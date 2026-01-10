@@ -85,15 +85,35 @@ image_map = {
     'Stand': 'img/stand.jpg'
 }
 
-extra_images = [
+extra_images_classroom = [
     'img/classroom 2.jpg', 'img/classroom 3.jpg', 'img/classroom 4.jpg',
     'img/classroom 5.jpg', 'img/classroom 6.jpg', 'img/classroom 7.jpg',
     'img/classroom 8.jpg', 'img/classroom 9.jpg', 'img/classroom 10.jpg',
     'img/classroom 11.jpg', 'img/classroom 12.jpg', 'img/classroom 15.jpg'
 ]
 
+extra_images_office = [
+    'img/staff 1.jpg', 'img/staff 2.jpg', 'img/admin.jpg', 'img/reception.jpg',
+    'img/reception 2.jpg', 'img/reception 3.jpg', 'img/reception 4.jpg'
+]
+
+extra_images_library = [
+    'img/Library 4.jpg', 'img/Library 5.jpg', 'img/Library 6.jpg',
+    'img/Library 7.jpg', 'img/Library 8.jpg', 'img/Library.jpg',
+    'img/Library 2.jpg', 'img/Library 3.jpg', 'img/Libray 10.jpg'
+]
+
 def sanitize_filename(name):
     return re.sub(r'[^\w\s-]', '', name).strip().lower().replace(' ', '-')
+
+def get_extra_images(product_name):
+    name_lower = product_name.lower()
+    if 'office' in name_lower or 'reception' in name_lower or 'conference' in name_lower or 'staff' in name_lower:
+        return extra_images_office
+    elif 'library' in name_lower or 'book' in name_lower or 'shelf' in name_lower or 'magazine' in name_lower or 'newspaper' in name_lower:
+        return extra_images_library
+    else:
+        return extra_images_classroom
 
 # New Footer HTML for Product Pages (links need ../)
 footer_html = """<footer>
@@ -156,8 +176,9 @@ for product_name, img_src in image_map.items():
     filename = sanitize_filename(product_name) + '.html'
     filepath = os.path.join('product', filename)
 
-    # 1. Update Title
-    content = template_content.replace('<title>Standard Dual Bench - skfurniture</title>', f'<title>{product_name} - skinterios</title>')
+    # 1. Update Title - Improved Regex
+    # Matches <title>...</title> regardless of content
+    content = re.sub(r'<title>.*?</title>', f'<title>{product_name} - skinterios</title>', template_content)
 
     # 2. Update Breadcrumb
     content = content.replace('<span>Standard Dual Bench</span>', f'<span>{product_name}</span>')
@@ -165,32 +186,42 @@ for product_name, img_src in image_map.items():
     # 3. Update H1
     content = re.sub(r'<h1 class="product-title">.*?</h1>', f'<h1 class="product-title">{product_name}</h1>', content)
 
-    # 4. SKU
+    # 4. Update Canonical Link
+    # Old: <link rel="canonical" href="https://skinterios.com/product-detail.html">
+    # New: <link rel="canonical" href="https://skinterios.com/product/{filename}">
+    content = content.replace(
+        '<link rel="canonical" href="https://skinterios.com/product-detail.html">',
+        f'<link rel="canonical" href="https://skinterios.com/product/{filename}">'
+    )
+
+    # 5. SKU
     acronym = "".join([w[0].upper() for w in product_name.split() if w])[:4]
     sku = f"SK-{acronym}-001"
     content = re.sub(r'<span class="product-sku">.*?</span>', f'<span class="product-sku">SKU: {sku}</span>', content)
 
-    # 5. Main Image
+    # 6. Main Image
     content = content.replace('src="img/classroom 2.jpg" alt="Standard Dual Bench" id="currentImage"', f'src="../{img_src}" alt="{product_name}" id="currentImage"')
 
-    # 6. Description Text
+    # 7. Description Text
     desc_text = f"The <strong>{product_name}</strong> by skinterios is engineered to withstand the rigors of daily institutional use while providing maximum comfort. Designed with ergonomics in mind, it supports modern learning and working environments."
     search_desc_block = """<p style="margin-bottom: 15px;">
                 <strong>SK Furniture</strong> presents the robust Two Seater Classroom Desk, meticulously designed to meet the evolving needs of modern educational institutions. Engineered for longevity, this desk combines the strength of <strong>CRCA Steel</strong> with the aesthetic appeal of high-grade pre-laminated engineered wood. It is the ideal choice for schools, colleges, and coaching centers looking for furniture that withstands the rigors of daily use while maintaining its pristine condition for years.
             </p>"""
     content = content.replace(search_desc_block, f'<p style="margin-bottom: 15px;">{desc_text}</p>')
 
-    # 7. WhatsApp Link
+    # 8. WhatsApp Link
     encoded_name = urllib.parse.quote(product_name)
     new_wa_href = f'https://wa.me/918169285185?text=Hi,%20I%20am%20interested%20in%20bulk%20quote%20for%20{encoded_name}%20({sku})'
     content = re.sub(r'href="https://wa.me/918169285185\?text=.*?"', f'href="{new_wa_href}"', content)
 
-    # 8. Thumbnails
+    # 9. Thumbnails
     thumbs_block_start = '<div class="gallery-thumbs">'
     thumbs_block_end = '</div>'
 
     start_idx = content.find(thumbs_block_start)
     end_idx = content.find(thumbs_block_end, start_idx)
+
+    extra_images = get_extra_images(product_name)
 
     if start_idx != -1 and end_idx != -1:
         new_thumbs = '\n'
@@ -202,7 +233,26 @@ for product_name, img_src in image_map.items():
 
         content = content[:start_idx + len(thumbs_block_start)] + new_thumbs + '            ' + content[end_idx:]
 
-    # 9. Fix Relative Paths
+    # 10. Update Customer Images (Review Section)
+    review_images_start = '<div class="customer-images-grid">'
+    review_images_end = '</div>'
+
+    rev_start_idx = content.find(review_images_start)
+
+    if rev_start_idx != -1:
+        # Find the end of this div, accounting for nested divs if any (though here it's simple)
+        rev_end_idx = content.find(review_images_end, rev_start_idx)
+        if rev_end_idx != -1:
+             new_rev_imgs = '\n'
+             for i in range(0, 3):
+                 rev_rot_index = (len(product_name) + i + 5) % len(extra_images) # Different offset
+                 rev_img = extra_images[rev_rot_index]
+                 new_rev_imgs += f'                    <img src="../{rev_img}" class="customer-img-thumb" onclick="changeImage(this.src)">\n'
+
+             content = content[:rev_start_idx + len(review_images_start)] + new_rev_imgs + '                ' + content[rev_end_idx:]
+
+
+    # 11. Fix Relative Paths
     content = content.replace('href="css/style.css"', 'href="../css/style.css"')
     content = content.replace('src="js/script.js"', 'src="../js/script.js"')
 
